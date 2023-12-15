@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.apelet</groupId>
+    <artifactId>Apelet-Admin-End</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>Apelet-Admin-End</name>
+    <url>https://xxx</url>
+    <modules>
+        <module>Apelet-Admin</module>
+        <module>Apelet-Api</module>
+        <module>Apelet-Common</module>
+        <module>Apelet-Domain</module>
+        <module>Apelet--Infrastructure</module>
+    </modules>
+    <description>基于 Springboot + Vue3的快速开发的中后台管理系统</description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>
