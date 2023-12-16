@@ -8,20 +8,25 @@
         <artifactId>Apelet-Admin-End</artifactId>
         <version>1.0.0</version>
     </parent>
+    <packaging>jar</packaging>
+    <artifactId>apelet-admin</artifactId>
 
-    <artifactId>apelet-domain</artifactId>
+    <description>
+        web服务入口
+    </description>
 
     <dependencies>
 
-        <!-- 通用工具-->
-        <dependency>
-            <groupId>com.apelet</groupId>
-            <artifactId>apelet-common</artifactId>
-        </dependency>
-
+        <!-- 核心模块(配置)-->
         <dependency>
             <groupId>com.apelet</groupId>
             <artifactId>apelet-infrastructure</artifactId>
+        </dependency>
+
+        <!-- 业务层 -->
+        <dependency>
+            <groupId>com.apelet</groupId>
+            <artifactId>apelet-domain</artifactId>
         </dependency>
 
         <dependency>
@@ -37,6 +42,24 @@
         </dependency>
 
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-
+        </plugins>
+    </build>
 </project>

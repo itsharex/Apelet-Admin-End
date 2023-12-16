@@ -11,10 +11,26 @@
 
     <artifactId>apelet-api</artifactId>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <dependencies>
+
+        <!-- 核心模块-->
+        <dependency>
+            <groupId>com.apelet</groupId>
+            <artifactId>apelet-infrastructure</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- 业务领域 -->
+        <dependency>
+            <groupId>com.apelet</groupId>
+            <artifactId>apelet-domain</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>
