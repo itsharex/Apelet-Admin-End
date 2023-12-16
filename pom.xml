@@ -12,11 +12,11 @@
     <name>Apelet-Admin-End</name>
     <url>https://xxx</url>
     <modules>
-        <module>Apelet-Admin</module>
-        <module>Apelet-Api</module>
-        <module>Apelet-Common</module>
-        <module>Apelet-Domain</module>
-        <module>Apelet--Infrastructure</module>
+        <module>apelet-system</module>
+        <module>apelet-api</module>
+        <module>apelet-common</module>
+        <module>apelet-domain</module>
+        <module>apelet-infrastructure</module>
     </modules>
     <description>基于 Springboot + Vue3的快速开发的中后台管理系统</description>
 

@@ -9,7 +9,7 @@
         <version>1.0.0</version>
     </parent>
     <packaging>jar</packaging>
-    <artifactId>Apelet-Admin</artifactId>
+    <artifactId>apelet-system</artifactId>
 
     <description>
         web服务入口
