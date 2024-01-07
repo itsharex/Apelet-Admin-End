@@ -2,14 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.apelet</groupId>
-        <artifactId>Apelet-Admin-End</artifactId>
+        <artifactId>agileboot</artifactId>
+        <groupId>com.agileboot</groupId>
         <version>1.0.0</version>
     </parent>
     <packaging>jar</packaging>
-    <artifactId>apelet-admin</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>agileboot-admin</artifactId>
 
     <description>
         web服务入口
@@ -17,16 +18,16 @@
 
     <dependencies>
 
-        <!-- 核心模块(配置)-->
+        <!-- 核心模块-->
         <dependency>
-            <groupId>com.apelet</groupId>
-            <artifactId>apelet-infrastructure</artifactId>
+            <groupId>com.agileboot</groupId>
+            <artifactId>agileboot-infrastructure</artifactId>
         </dependency>
 
-        <!-- 业务层 -->
+        <!-- 业务领域 -->
         <dependency>
-            <groupId>com.apelet</groupId>
-            <artifactId>apelet-domain</artifactId>
+            <groupId>com.agileboot</groupId>
+            <artifactId>agileboot-domain</artifactId>
         </dependency>
 
         <dependency>
@@ -42,6 +43,7 @@
         </dependency>
 
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -62,4 +64,6 @@
 
         </plugins>
     </build>
+
+
 </project>
