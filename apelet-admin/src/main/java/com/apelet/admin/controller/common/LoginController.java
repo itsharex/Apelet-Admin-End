@@ -5,24 +5,24 @@ import com.apelet.admin.customize.service.login.LoginService;
 import com.apelet.admin.customize.service.login.command.LoginCommand;
 import com.apelet.admin.customize.service.login.dto.CaptchaDTO;
 import com.apelet.admin.customize.service.login.dto.ConfigDTO;
-import com.apelet.common.config.ApeletConfig;
+import com.apelet.common.config.AgileBootConfig;
 import com.apelet.common.core.dto.ResponseDTO;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode.Business;
-import com.apelet.core.annotations.ratelimit.RateLimit;
-import com.apelet.core.annotations.ratelimit.RateLimit.CacheType;
-import com.apelet.core.annotations.ratelimit.RateLimit.LimitType;
-import com.apelet.core.annotations.ratelimit.RateLimitKey;
-import com.apelet.core.user.AuthenticationUtils;
-import com.apelet.core.user.web.SystemLoginUser;
 import com.apelet.domain.common.dto.CurrentLoginUserDTO;
 import com.apelet.domain.common.dto.TokenDTO;
 import com.apelet.domain.system.menu.MenuApplicationService;
 import com.apelet.domain.system.menu.dto.RouterDTO;
 import com.apelet.domain.system.user.UserApplicationService;
 import com.apelet.domain.system.user.command.AddUserCommand;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.apelet.infrastructure.annotations.ratelimit.RateLimit;
+import com.apelet.infrastructure.annotations.ratelimit.RateLimit.CacheType;
+import com.apelet.infrastructure.annotations.ratelimit.RateLimit.LimitType;
+import com.apelet.infrastructure.annotations.ratelimit.RateLimitKey;
+import com.apelet.infrastructure.user.AuthenticationUtils;
+import com.apelet.infrastructure.user.web.SystemLoginUser;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,9 +34,9 @@ import java.util.List;
 /**
  * 首页
  *
- * @author xiaoyuan-zs
+ * @author valarchie
  */
-@Api(tags = "登录")
+@Tag(name = "登录API", description = "登录相关接口")
 @RestController
 @RequiredArgsConstructor
 public class LoginController {
@@ -47,18 +47,18 @@ public class LoginController {
 
     private final UserApplicationService userApplicationService;
 
-    private final ApeletConfig apeletConfig;
+    private final AgileBootConfig agileBootConfig;
 
     /**
      * 访问首页，提示语
      */
-    @ApiOperation(value = "首页")
+    @Operation(summary = "首页")
     @GetMapping("/")
     @RateLimit(key = RateLimitKey.TEST_KEY, time = 10, maxCount = 5, cacheType = CacheType.Map,
-            limitType = LimitType.GLOBAL)
+        limitType = LimitType.GLOBAL)
     public String index() {
         return StrUtil.format("欢迎使用{}后台管理框架，当前版本：v{}，请通过前端地址访问。",
-                apeletConfig.getName(), apeletConfig.getVersion());
+            agileBootConfig.getName(), agileBootConfig.getVersion());
     }
 
 
@@ -68,7 +68,6 @@ public class LoginController {
      * @return 配置信息
      */
     @GetMapping("/getConfig")
-    @ApiOperation(value = "首页")
     public ResponseDTO<ConfigDTO> getConfig() {
         ConfigDTO configDTO = loginService.getConfig();
         return ResponseDTO.ok(configDTO);
@@ -77,9 +76,9 @@ public class LoginController {
     /**
      * 生成验证码
      */
-    @ApiOperation( "验证码")
+    @Operation(summary = "验证码")
     @RateLimit(key = RateLimitKey.LOGIN_CAPTCHA_KEY, time = 10, maxCount = 10, cacheType = CacheType.REDIS,
-            limitType = LimitType.IP)
+        limitType = LimitType.IP)
     @GetMapping("/captchaImage")
     public ResponseDTO<CaptchaDTO> getCaptchaImg() {
         CaptchaDTO captchaImg = loginService.generateCaptchaImg();
@@ -92,7 +91,7 @@ public class LoginController {
      * @param loginCommand 登录信息
      * @return 结果
      */
-    @ApiOperation( "登录")
+    @Operation(summary = "登录")
     @PostMapping("/login")
     public ResponseDTO<TokenDTO> login(@RequestBody LoginCommand loginCommand) {
         // 生成令牌
@@ -108,7 +107,7 @@ public class LoginController {
      *
      * @return 用户信息
      */
-    @ApiOperation( "获取当前登录用户信息")
+    @Operation(summary = "获取当前登录用户信息")
     @GetMapping("/getLoginUserInfo")
     public ResponseDTO<CurrentLoginUserDTO> getLoginUserInfo() {
         SystemLoginUser loginUser = AuthenticationUtils.getSystemLoginUser();
@@ -123,7 +122,7 @@ public class LoginController {
      * TODO 如果要在前端开启路由缓存的话 需要在ServerConfig.json 中  设置CachingAsyncRoutes=true  避免一直重复请求路由接口
      * @return 路由信息
      */
-    @ApiOperation( "获取用户对应的菜单路由")
+    @Operation(summary = "获取用户对应的菜单路由", description = "用于动态生成路由")
     @GetMapping("/getRouters")
     public ResponseDTO<List<RouterDTO>> getRouters() {
         SystemLoginUser loginUser = AuthenticationUtils.getSystemLoginUser();
@@ -132,7 +131,7 @@ public class LoginController {
     }
 
 
-    @ApiOperation( "注册接口")
+    @Operation(summary = "注册接口", description = "暂未实现")
     @PostMapping("/register")
     public ResponseDTO<Void> register(@RequestBody AddUserCommand command) {
         return ResponseDTO.fail(new ApiException(Business.COMMON_UNSUPPORTED_OPERATION));

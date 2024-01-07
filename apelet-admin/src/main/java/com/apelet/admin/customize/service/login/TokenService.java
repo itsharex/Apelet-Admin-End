@@ -3,11 +3,11 @@ package com.apelet.admin.customize.service.login;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
-import com.apelet.common.constant.Constants;
+import com.apelet.common.constant.Constants.Token;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
-import com.apelet.core.user.web.SystemLoginUser;
 import com.apelet.domain.common.cache.RedisCacheService;
+import com.apelet.infrastructure.user.web.SystemLoginUser;
 import io.jsonwebtoken.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -64,7 +64,7 @@ public class TokenService {
             try {
                 Claims claims = parseToken(token);
                 // 解析对应的权限以及用户信息
-                String uuid = (String) claims.get(Constants.Token.LOGIN_USER_KEY);
+                String uuid = (String) claims.get(Token.LOGIN_USER_KEY);
 
                 return redisCache.loginUserCache.getObjectOnlyInCacheById(uuid);
             } catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException jwtException) {
@@ -90,7 +90,7 @@ public class TokenService {
 
         redisCache.loginUserCache.set(loginUser.getCachedKey(), loginUser);
 
-        return generateToken(MapUtil.of(Constants.Token.LOGIN_USER_KEY, loginUser.getCachedKey()));
+        return generateToken(MapUtil.of(Token.LOGIN_USER_KEY, loginUser.getCachedKey()));
     }
 
     /**
@@ -150,8 +150,8 @@ public class TokenService {
      */
     private String getTokenFromRequest(HttpServletRequest request) {
         String token = request.getHeader(header);
-        if (StrUtil.isNotEmpty(token) && token.startsWith(Constants.Token.PREFIX)) {
-            token = StrUtil.stripIgnoreCase(token, Constants.Token.PREFIX, null);
+        if (StrUtil.isNotEmpty(token) && token.startsWith(Token.PREFIX)) {
+            token = StrUtil.stripIgnoreCase(token, Token.PREFIX, null);
         }
         return token;
     }

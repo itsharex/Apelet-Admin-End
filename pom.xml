@@ -4,15 +4,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.agileboot</groupId>
-    <artifactId>agileboot</artifactId>
+    <groupId>com.apelet</groupId>
+    <artifactId>Apelet-Admin-End</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
     <!--  放弃使用 revision字段 子module会安装失败-->
     <!--  https://stackoverflow.com/questions/52173260/how-to-resolve-parent-pom-dependency-issue-failed-to-read-artifact-descriptor -->
-    <version>1.0.0</version>
+    <name>Apelet-Admin-End</name>
+    <url>http://www.apelet.vip</url>
+    <description>基于 Springboot + Vue3的快速开发的中后台管理系统</description>
 
-    <name>agileboot</name>
-    <url>http://www.agileboot.vip</url>
-    <description>基于 springboot的快速开发系统</description>
+    <modules>
+        <module>apelet-admin</module>
+        <module>apelet-api</module>
+        <module>apelet-common</module>
+        <module>apelet-domain</module>
+        <module>apelet-core</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,13 +85,6 @@
                 <version>${bitwalker.version}</version>
             </dependency>
 
-            <!-- SpringBoot集成mybatis框架 -->
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis-spring-boot.version}</version>
-            </dependency>
-
             <!-- mybatis plus 主依赖 -->
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -94,14 +96,6 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
                 <version>${mybatis-plus-generator.version}</version>
-            </dependency>
-
-
-            <!-- pageHelper 分页插件 -->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${pagehelper.boot.version}</version>
             </dependency>
 
             <!-- 获取系统信息 -->
@@ -168,38 +162,39 @@
             </dependency>
 
 
+            <!--系统模块-->
             <!-- admin管理模块 -->
             <dependency>
-                <groupId>com.agileboot</groupId>
-                <artifactId>agileboot-admin</artifactId>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-admin</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- 定时任务-->
             <dependency>
-                <groupId>com.agileboot</groupId>
-                <artifactId>agileboot-api</artifactId>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- 代码生成-->
             <dependency>
-                <groupId>com.agileboot</groupId>
-                <artifactId>agileboot-domain</artifactId>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- 核心模块-->
             <dependency>
-                <groupId>com.agileboot</groupId>
-                <artifactId>agileboot-infrastructure</artifactId>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <!-- 通用工具-->
             <dependency>
-                <groupId>com.agileboot</groupId>
-                <artifactId>agileboot-common</artifactId>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -210,6 +205,7 @@
                 <version>${hutool.version}</version>
             </dependency>
 
+            <!-- Lombok-->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -267,16 +263,6 @@
 
         </dependencies>
     </dependencyManagement>
-
-    <modules>
-        <module>agileboot-admin</module>
-        <module>agileboot-api</module>
-        <module>agileboot-common</module>
-        <module>agileboot-domain</module>
-        <module>agileboot-infrastructure</module>
-    </modules>
-    <packaging>pom</packaging>
-
 
     <dependencies>
         <dependency>

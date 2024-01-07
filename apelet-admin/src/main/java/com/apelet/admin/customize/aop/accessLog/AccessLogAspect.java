@@ -1,7 +1,7 @@
 package com.apelet.admin.customize.aop.accessLog;
 
 import com.apelet.admin.customize.async.AsyncTaskFactory;
-import com.apelet.core.thread.ThreadPoolManager;
+import com.apelet.infrastructure.thread.ThreadPoolManager;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;

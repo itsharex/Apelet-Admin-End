@@ -1,7 +1,7 @@
 package com.apelet.admin.customize.service.permission.model;
 
-import com.apelet.core.user.web.SystemLoginUser;
 import com.apelet.domain.system.dept.db.SysDeptService;
+import com.apelet.infrastructure.user.web.SystemLoginUser;
 import lombok.Data;
 
 /**

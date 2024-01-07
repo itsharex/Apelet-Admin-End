@@ -2,9 +2,9 @@ package com.apelet.admin.customize.service.permission;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.apelet.core.user.AuthenticationUtils;
-import com.apelet.core.user.web.RoleInfo;
-import com.apelet.core.user.web.SystemLoginUser;
+import com.apelet.infrastructure.user.AuthenticationUtils;
+import com.apelet.infrastructure.user.web.RoleInfo;
+import com.apelet.infrastructure.user.web.SystemLoginUser;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

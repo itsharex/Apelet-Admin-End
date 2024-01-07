@@ -14,20 +14,21 @@ import com.apelet.admin.customize.async.AsyncTaskFactory;
 import com.apelet.admin.customize.service.login.command.LoginCommand;
 import com.apelet.admin.customize.service.login.dto.CaptchaDTO;
 import com.apelet.admin.customize.service.login.dto.ConfigDTO;
-import com.apelet.common.config.ApeletConfig;
-import com.apelet.common.constant.Constants;
+import com.apelet.common.config.AgileBootConfig;
+import com.apelet.common.constant.Constants.Captcha;
 import com.apelet.common.enums.common.ConfigKeyEnum;
 import com.apelet.common.enums.common.LoginStatusEnum;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
+import com.apelet.common.exception.error.ErrorCode.Business;
 import com.apelet.common.utils.ServletHolderUtil;
 import com.apelet.common.utils.i18n.MessageUtils;
-import com.apelet.core.thread.ThreadPoolManager;
-import com.apelet.core.user.web.SystemLoginUser;
 import com.apelet.domain.common.cache.GuavaCacheService;
 import com.apelet.domain.common.cache.MapCache;
 import com.apelet.domain.common.cache.RedisCacheService;
 import com.apelet.domain.system.user.db.SysUserEntity;
+import com.apelet.infrastructure.thread.ThreadPoolManager;
+import com.apelet.infrastructure.user.web.SystemLoginUser;
 import com.google.code.kaptcha.Producer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -94,7 +95,7 @@ public class LoginService {
             throw new ApiException(e, ErrorCode.Business.LOGIN_ERROR, e.getMessage());
         } catch (Exception e) {
             ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL, e.getMessage()));
-            throw new ApiException(e, ErrorCode.Business.LOGIN_ERROR, e.getMessage());
+            throw new ApiException(e, Business.LOGIN_ERROR, e.getMessage());
         }
         // 把当前登录用户 放入上下文中
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -136,8 +137,8 @@ public class LoginService {
             BufferedImage image = null;
 
             // 生成验证码
-            String captchaType = ApeletConfig.getCaptchaType();
-            if (Constants.Captcha.MATH_TYPE.equals(captchaType)) {
+            String captchaType = AgileBootConfig.getCaptchaType();
+            if (Captcha.MATH_TYPE.equals(captchaType)) {
                 String capText = captchaProducerMath.createText();
                 String[] expressionAndAnswer = capText.split("@");
                 expression = expressionAndAnswer[0];
@@ -145,7 +146,7 @@ public class LoginService {
                 image = captchaProducerMath.createImage(expression);
             }
 
-            if (Constants.Captcha.CHAR_TYPE.equals(captchaType)) {
+            if (Captcha.CHAR_TYPE.equals(captchaType)) {
                 expression = answer = captchaProducer.createText();
                 image = captchaProducer.createImage(expression);
             }
@@ -209,8 +210,9 @@ public class LoginService {
     }
 
     public String decryptPassword(String originalPassword) {
-        byte[] decryptBytes = SecureUtil.rsa(ApeletConfig.getRsaPrivateKey(), null)
+        byte[] decryptBytes = SecureUtil.rsa(AgileBootConfig.getRsaPrivateKey(), null)
             .decrypt(Base64.decode(originalPassword), KeyType.PrivateKey);
+
         return StrUtil.str(decryptBytes, CharsetUtil.CHARSET_UTF_8);
     }
 
