@@ -7,7 +7,7 @@ import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
-import com.apelet.common.config.AgileBootConfig;
+import com.apelet.common.config.ApeletAdminConfig;
 import com.apelet.common.constant.Constants;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
@@ -217,7 +217,7 @@ public class FileUploadUtils {
 
 
     public static String getFileAbsolutePath(String subDir, String fileName) {
-        return AgileBootConfig.getFileBaseDir() + File.separator + subDir + File.separator + fileName;
+        return ApeletAdminConfig.getFileBaseDir() + File.separator + subDir + File.separator + fileName;
     }
 
 

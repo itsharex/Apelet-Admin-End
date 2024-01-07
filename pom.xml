@@ -161,43 +161,6 @@
                 <version>${kaptcha.version}</version>
             </dependency>
 
-
-            <!--系统模块-->
-            <!-- admin管理模块 -->
-            <dependency>
-                <groupId>com.apelet</groupId>
-                <artifactId>apelet-admin</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!-- 定时任务-->
-            <dependency>
-                <groupId>com.apelet</groupId>
-                <artifactId>apelet-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!-- 代码生成-->
-            <dependency>
-                <groupId>com.apelet</groupId>
-                <artifactId>apelet-domain</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!-- 核心模块-->
-            <dependency>
-                <groupId>com.apelet</groupId>
-                <artifactId>apelet-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!-- 通用工具-->
-            <dependency>
-                <groupId>com.apelet</groupId>
-                <artifactId>apelet-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
             <!-- hutool common tools-->
             <dependency>
                 <groupId>cn.hutool</groupId>
@@ -259,6 +222,42 @@
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
                 <version>${io.swagger.version}</version>
+            </dependency>
+
+            <!--系统模块-->
+            <!-- admin管理模块 -->
+            <dependency>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-admin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 定时任务-->
+            <dependency>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 代码生成-->
+            <dependency>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 核心模块-->
+            <dependency>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 通用工具-->
+            <dependency>
+                <groupId>com.apelet</groupId>
+                <artifactId>apelet-common</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
         </dependencies>

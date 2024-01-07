@@ -14,7 +14,7 @@ import com.apelet.admin.customize.async.AsyncTaskFactory;
 import com.apelet.admin.customize.service.login.command.LoginCommand;
 import com.apelet.admin.customize.service.login.dto.CaptchaDTO;
 import com.apelet.admin.customize.service.login.dto.ConfigDTO;
-import com.apelet.common.config.AgileBootConfig;
+import com.apelet.common.config.ApeletAdminConfig;
 import com.apelet.common.constant.Constants.Captcha;
 import com.apelet.common.enums.common.ConfigKeyEnum;
 import com.apelet.common.enums.common.LoginStatusEnum;
@@ -137,7 +137,7 @@ public class LoginService {
             BufferedImage image = null;
 
             // 生成验证码
-            String captchaType = AgileBootConfig.getCaptchaType();
+            String captchaType = ApeletAdminConfig.getCaptchaType();
             if (Captcha.MATH_TYPE.equals(captchaType)) {
                 String capText = captchaProducerMath.createText();
                 String[] expressionAndAnswer = capText.split("@");
@@ -210,7 +210,7 @@ public class LoginService {
     }
 
     public String decryptPassword(String originalPassword) {
-        byte[] decryptBytes = SecureUtil.rsa(AgileBootConfig.getRsaPrivateKey(), null)
+        byte[] decryptBytes = SecureUtil.rsa(ApeletAdminConfig.getRsaPrivateKey(), null)
             .decrypt(Base64.decode(originalPassword), KeyType.PrivateKey);
 
         return StrUtil.str(decryptBytes, CharsetUtil.CHARSET_UTF_8);

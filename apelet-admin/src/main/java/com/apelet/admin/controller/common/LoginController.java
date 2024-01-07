@@ -5,7 +5,7 @@ import com.apelet.admin.customize.service.login.LoginService;
 import com.apelet.admin.customize.service.login.command.LoginCommand;
 import com.apelet.admin.customize.service.login.dto.CaptchaDTO;
 import com.apelet.admin.customize.service.login.dto.ConfigDTO;
-import com.apelet.common.config.AgileBootConfig;
+import com.apelet.common.config.ApeletAdminConfig;
 import com.apelet.common.core.dto.ResponseDTO;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode.Business;
@@ -47,7 +47,7 @@ public class LoginController {
 
     private final UserApplicationService userApplicationService;
 
-    private final AgileBootConfig agileBootConfig;
+    private final ApeletAdminConfig agileBootConfig;
 
     /**
      * 访问首页，提示语

@@ -12,7 +12,7 @@ spring:
                 allow:
                 url-pattern: /druid/*
                 # 控制台管理用户名和密码
-                login-username: agileboot
+                login-username: apelet
                 login-password: 123456
             filter:
                 stat:
@@ -50,25 +50,25 @@ spring:
             datasource:
                 # 主库数据源
                 master:
-                    url: jdbc:mysql://localhost:33067/agileboot-pure?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+                    url: jdbc:mysql://localhost:3306/apelet_admin?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
                     username: root
-                    password: 12345
+                    password: 123456
                 # 从库数据源
 #                slave:
-#                    url: jdbc:mysql://localhost:33067/agileboot2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+#                    url: jdbc:mysql://localhost:3306/apelet_admin2?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
 #                    username: root
-#                    password: 12345
+#                    password: 123456
 
     # redis 配置
     redis:
         # 地址
         host: localhost
         # 端口，默认为6379
-        port: 36379
+        port: 6379
         # 数据库索引
         database: 0
         # 密码
-        password: 12345
+#        password: 12345
         # 连接超时时间
         timeout: 10s
         lettuce:
@@ -84,22 +84,22 @@ spring:
 
 logging:
     file:
-        path: D:/logs/agileboot-dev
+        path: F:/study/java/github/Apelet-Admin-End/apelet-dev/logs
 
 
 springdoc:
     swagger-ui:
         # ***注意*** 开启Swagger UI界面  **安全考虑的话生产环境需要关掉**
-        # 因为knife4j的一些配置不灵活 所以重新改回springdoc+swagger的组合  真实开发的时候 使用apifox这种工具效率更高
+        # 因为knife4j的一些配置不灵活 所以重新改回springdoc+swagger的组合  真实开发的时候 使用ApiPost这种工具效率更高
         enabled: true
-        url: ${agileboot.api-prefix}/v3/api-docs
-        config-url: ${agileboot.api-prefix}/v3/api-docs/swagger-config
+        url: ${apelet.api-prefix}/v3/api-docs
+        config-url: ${apelet.api-prefix}/v3/api-docs/swagger-config
 
 
 # 项目相关配置
-agileboot:
+apelet:
     # 文件基路径 示例（ Windows配置D:\agileboot，Linux配置 /home/agileboot）
-    file-base-dir: D:\agileboot
+    file-base-dir: F:\study\java\github\Apelet-Admin-End\apelet-dev\files
     # 前端url请求转发前缀
     api-prefix: /dev-api
     demo-enabled: false

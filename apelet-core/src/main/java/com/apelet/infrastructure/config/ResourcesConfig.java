@@ -1,6 +1,6 @@
 package com.apelet.infrastructure.config;
 
-import com.apelet.common.config.AgileBootConfig;
+import com.apelet.common.config.ApeletAdminConfig;
 import com.apelet.common.constant.Constants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class ResourcesConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         /* 本地文件上传路径 */
         registry.addResourceHandler("/" + Constants.RESOURCE_PREFIX + "/**")
-            .addResourceLocations("file:" + AgileBootConfig.getFileBaseDir() + "/");
+            .addResourceLocations("file:" + ApeletAdminConfig.getFileBaseDir() + "/");
 
     }
 

@@ -20,7 +20,7 @@ import org.springframework.web.filter.CorsFilter;
 public class FilterConfig {
 
     // TODO 后续统一到一个properties 类中比较好
-    @Value("${agileboot.traceRequestIdKey}")
+    @Value("${apelet.traceRequestIdKey}")
     private String requestIdKey;
 
 

@@ -1,12 +1,12 @@
 # 基础公用的配置参数放置在这份yml中
 # 项目相关配置
-agileboot:
+apelet:
   # 名称
-  name: AgileBoot
+  name: apeletAdmin
   # 版本
-  version: 1.8.0
+  version: 1.0.0
   # 版权年份
-  copyright-year: 2022
+  copyright-year: 2024
   # 实例演示开关
   demo-enabled: true
   # 获取ip地址开关
@@ -43,10 +43,10 @@ agileboot:
 logging:
   level:
     # 记得配置到包名
-    com.agileboot: debug
+    com.apelet: debug
     org.springframework: info
   pattern:
-    console: "%date requestId:%X{${agileboot.traceRequestIdKey}} %thread %green(%level) [%cyan(%logger{10}):%magenta(%line)] %red(%method) | %msg%n"
+    console: "%date requestId:%X{${apelet.traceRequestIdKey}} %thread %green(%level) [%cyan(%logger{10}):%magenta(%line)] %red(%method) | %msg%n"
 
 
 # Spring配置
@@ -95,9 +95,9 @@ token:
 # MyBatis配置
 mybatis-plus:
     # 搜索指定包别名 使用简短的类型名称来代替完整的类型名称
-#    typeAliasesPackage: com.agileboot.orm.*
+#    typeAliasesPackage: com.apelet.orm.*
     # 配置mapper的扫描，找到所有的mapper.xml映射文件
-    mapperLocations: classpath*:mapper/**/*Mapper.xml
+    mapperLocations: classpath*:/mybatis/mapper/**/*Mapper.xml
     # 加载全局的配置文件
     configuration:
       cacheEnabled: true
@@ -121,7 +121,7 @@ springdoc:
     groups:
       enabled: true
   # 配置需要生成接口文档的扫描包
-  packages-to-scan: com.agileboot
+  packages-to-scan: com.apelet
 
 
 

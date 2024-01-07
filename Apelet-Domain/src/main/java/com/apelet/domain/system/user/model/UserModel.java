@@ -2,7 +2,7 @@ package com.apelet.domain.system.user.model;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
-import com.apelet.common.config.AgileBootConfig;
+import com.apelet.common.config.ApeletAdminConfig;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
 import com.apelet.common.exception.error.ErrorCode.Business;
@@ -140,7 +140,7 @@ public class UserModel extends SysUserEntity {
 
     @Override
     public boolean updateById() {
-        if (this.getIsAdmin() && AgileBootConfig.isDemoEnabled()) {
+        if (this.getIsAdmin() && ApeletAdminConfig.isDemoEnabled()) {
             throw new ApiException(Business.USER_ADMIN_CAN_NOT_BE_MODIFY);
         }
 

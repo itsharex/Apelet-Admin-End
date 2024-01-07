@@ -13,9 +13,9 @@ import java.io.File;
  * @author valarchie
  */
 @Component
-@ConfigurationProperties(prefix = "agileboot")
+@ConfigurationProperties(prefix = "apelet")
 @Data
-public class AgileBootConfig {
+public class ApeletAdminConfig {
 
     /**
      * 项目名称
@@ -64,7 +64,7 @@ public class AgileBootConfig {
     }
 
     public void setFileBaseDir(String fileBaseDir) {
-        AgileBootConfig.fileBaseDir = fileBaseDir  + File.separator + Constants.RESOURCE_PREFIX;
+        ApeletAdminConfig.fileBaseDir = fileBaseDir  + File.separator + Constants.RESOURCE_PREFIX;
     }
 
     public static String getApiPrefix() {
@@ -72,7 +72,7 @@ public class AgileBootConfig {
     }
 
     public void setApiPrefix(String apiDocsPathPrefix) {
-        AgileBootConfig.apiPrefix = apiDocsPathPrefix;
+        ApeletAdminConfig.apiPrefix = apiDocsPathPrefix;
     }
 
     public static boolean isAddressEnabled() {
@@ -80,7 +80,7 @@ public class AgileBootConfig {
     }
 
     public void setAddressEnabled(boolean addressEnabled) {
-        AgileBootConfig.addressEnabled = addressEnabled;
+        ApeletAdminConfig.addressEnabled = addressEnabled;
     }
 
     public static String getCaptchaType() {
@@ -88,7 +88,7 @@ public class AgileBootConfig {
     }
 
     public void setCaptchaType(String captchaType) {
-        AgileBootConfig.captchaType = captchaType;
+        ApeletAdminConfig.captchaType = captchaType;
     }
 
     public static String getRsaPrivateKey() {
@@ -96,7 +96,7 @@ public class AgileBootConfig {
     }
 
     public void setRsaPrivateKey(String rsaPrivateKey) {
-        AgileBootConfig.rsaPrivateKey = rsaPrivateKey;
+        ApeletAdminConfig.rsaPrivateKey = rsaPrivateKey;
     }
 
     public static boolean isDemoEnabled() {
@@ -104,7 +104,7 @@ public class AgileBootConfig {
     }
 
     public void setDemoEnabled(boolean demoEnabled) {
-        AgileBootConfig.demoEnabled = demoEnabled;
+        ApeletAdminConfig.demoEnabled = demoEnabled;
     }
 
 }

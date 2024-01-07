@@ -3,7 +3,7 @@ package com.apelet.common.utils.ip;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
-import com.apelet.common.config.AgileBootConfig;
+import com.apelet.common.config.ApeletAdminConfig;
 import com.apelet.common.utils.jackson.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,7 +29,7 @@ public class OnlineIpRegionUtil {
             return null;
         }
 
-        if (AgileBootConfig.isAddressEnabled()) {
+        if (ApeletAdminConfig.isAddressEnabled()) {
             try {
                 String rspStr = HttpUtil.get(ADDRESS_QUERY_SITE + "?ip=" + ip + "&json=true",
                     CharsetUtil.CHARSET_GBK);
