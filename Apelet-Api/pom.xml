@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>agileboot</artifactId>
-        <groupId>com.agileboot</groupId>
+        <groupId>com.apelet</groupId>
+        <artifactId>Apelet-Admin-End</artifactId>
         <version>1.0.0</version>
     </parent>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>agileboot-api</artifactId>
+    <artifactId>apelet-api</artifactId>
 
     <description>
         外部API
@@ -20,8 +20,8 @@
 
         <!-- 核心模块-->
         <dependency>
-            <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-infrastructure</artifactId>
+            <groupId>com.apelet</groupId>
+            <artifactId>apelet-core</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -38,8 +38,8 @@
 
         <!-- 业务领域 -->
         <dependency>
-            <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-domain</artifactId>
+            <groupId>com.apelet</groupId>
+            <artifactId>apelet-domain</artifactId>
         </dependency>
 
     </dependencies>

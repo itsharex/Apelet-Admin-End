@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>agileboot</artifactId>
-        <groupId>com.agileboot</groupId>
+        <groupId>com.apelet</groupId>
+        <artifactId>Apelet-Admin-End</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>agileboot-domain</artifactId>
+    <artifactId>apelet-domain</artifactId>
 
     <description>
         领域核心代码 放在这个包
@@ -20,13 +20,13 @@
 
         <!-- 通用工具-->
         <dependency>
-            <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-common</artifactId>
+            <groupId>com.apelet</groupId>
+            <artifactId>apelet-common</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.agileboot</groupId>
-            <artifactId>agileboot-infrastructure</artifactId>
+            <groupId>com.apelet</groupId>
+            <artifactId>apelet-core</artifactId>
         </dependency>
 
         <dependency>
