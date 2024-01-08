@@ -20,6 +20,9 @@ public class GuavaCacheBean implements Cache {
      */
     private com.google.common.cache.Cache<Object, Object> storage;
 
+    /**
+     * 当依赖注入完成后用于执行初始化的方法，并且只会被执行一次
+     */
     @PostConstruct
     private void init() {
         storage = CacheBuilder.newBuilder()

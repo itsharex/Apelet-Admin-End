@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 缓存接口实现类 三级缓存
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Slf4j
 public class RedisCacheTemplate<T> {
@@ -21,6 +21,11 @@ public class RedisCacheTemplate<T> {
     private final CacheKeyEnum redisRedisEnum;
     private final LoadingCache<String, Optional<T>> guavaCache;
 
+    /**
+     * 从redis中查询数据存入本地二级缓存中
+     * @param redisUtil
+     * @param redisRedisEnum
+     */
     public RedisCacheTemplate(RedisUtil redisUtil, CacheKeyEnum redisRedisEnum) {
         this.redisUtil = redisUtil;
         this.redisRedisEnum = redisRedisEnum;
@@ -118,6 +123,7 @@ public class RedisCacheTemplate<T> {
     }
 
     public String generateKey(Object id) {
+        // redisRedisEnum.key() + id ==> key:验证码
         return redisRedisEnum.key() + id;
     }
 

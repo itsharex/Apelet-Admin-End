@@ -1,7 +1,6 @@
 package com.apelet.infrastructure.cache.guava;
 
 import cn.hutool.core.util.StrUtil;
-import com.google.common.base.Ticker;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -33,12 +32,14 @@ public abstract class AbstractGuavaCacheTemplate<T> {
         // -- 软引用value
 //        .softValues()
         // 过期失效回收
-        // -- 没读写访问下，超过5秒会失效(非自动失效，需有任意get put方法才会扫描过期失效数据)
+        // -- 当缓存项在指定的时间段内没有被读或写就会被回收 (非自动失效，需有任意get put方法才会扫描过期失效数据)
 //        .expireAfterAccess(5L, TimeUnit.MINUTES)
-        // -- 没写访问下，超过5秒会失效(非自动失效，需有任意put get方法才会扫描过期失效数据)
+        // -- 没写访问下，超过5秒会失效，当缓存项在指定的时间段内没有更新就会被回收,
+        //    如果我们认为缓存数据在一段时间后数据不再可用，那么可以使用该种策略。(非自动失效，需有任意put get方法才会扫描过期失效数据)
 //        .expireAfterWrite(5L, TimeUnit.MINUTES)
-        // 没写访问下，超过5秒会失效(非自动失效，需有任意put get方法才会扫描过期失效数据。但区别是会开一个异步线程进行刷新，刷新过程中访问返回旧数据)
-        .refreshAfterWrite(5L, TimeUnit.MINUTES)
+        // -- 没写访问下，超过10秒会失效(非自动失效，需有任意put get方法才会扫描过期失效数据。但区别是会开一个异步线程进行刷新，刷新过程中访问返回旧数据)
+        //    当缓存项上一次更新操作之后的多久会被刷新
+        .refreshAfterWrite(10L, TimeUnit.MINUTES)
         // 移除监听事件
         .removalListener(removal -> {
             // 可做一些删除后动作，比如上报删除数据用于统计
@@ -51,13 +52,14 @@ public abstract class AbstractGuavaCacheTemplate<T> {
         // 所有segment的初始总容量大小
         .initialCapacity(128)
         // 用于测试，可任意改变当前时间。参考：https://www.geek-share.com/detail/2689756248.html
-        .ticker(new Ticker() {
-            @Override
-            public long read() {
-                return 0;
-            }
-        })
+//        .ticker(new Ticker() {
+//            @Override
+//            public long read() {
+//                return 0;
+//            }
+//        })
         .build(new CacheLoader<String, Optional<T>>() {
+//            从数据库里面查询，放到本地内存缓存中， 通过getU
             @Override
             public Optional<T> load(String key) {
                 T cacheObject = getObjectFromDb(key);
@@ -73,7 +75,7 @@ public abstract class AbstractGuavaCacheTemplate<T> {
             if (StrUtil.isEmpty(key)) {
                 return null;
             }
-
+            // 从数据库中查询，有则直接返回，没有则进入load()方法查询并存入，也涉及到（缓存剔除机制）
             Optional<T> optional = guavaCache.get(key);
             return optional.orElse(null);
         } catch (ExecutionException e) {

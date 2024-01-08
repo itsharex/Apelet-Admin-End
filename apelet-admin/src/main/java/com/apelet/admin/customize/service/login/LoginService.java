@@ -47,7 +47,7 @@ import java.awt.image.BufferedImage;
 /**
  * 登录校验方法
  *
- * @author ruoyi
+ * @author xiaoyuan-zs
  */
 @Component
 @Slf4j
@@ -77,6 +77,7 @@ public class LoginService {
     public String login(LoginCommand loginCommand) {
         // 验证码开关
         if (isCaptchaOn()) {
+            // 校验严重码
             validateCaptcha(loginCommand.getUsername(), loginCommand.getCaptchaCode(), loginCommand.getCaptchaCodeKey());
         }
         // 用户验证
@@ -107,7 +108,7 @@ public class LoginService {
     }
 
     /**
-     * 获取验证码 data
+     * 获取参数配置 data
      *
      * @return {@link ConfigDTO}
      */
@@ -180,6 +181,7 @@ public class LoginService {
      * @param captchaCodeKey 验证码对应的缓存key
      */
     public void validateCaptcha(String username, String captchaCode, String captchaCodeKey) {
+        // 查询redis中的验证码
         String captcha = redisCache.captchaCache.getObjectById(captchaCodeKey);
         redisCache.captchaCache.delete(captchaCodeKey);
         if (captcha == null) {
@@ -216,7 +218,12 @@ public class LoginService {
         return StrUtil.str(decryptBytes, CharsetUtil.CHARSET_UTF_8);
     }
 
+    /**
+     * 查看参数配置中是否开启验证码功能
+     * @return
+     */
     private boolean isCaptchaOn() {
+
         return Convert.toBool(guavaCache.configCache.get(ConfigKeyEnum.CAPTCHA.getValue()));
     }
 

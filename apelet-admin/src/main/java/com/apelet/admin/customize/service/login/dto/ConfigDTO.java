@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class ConfigDTO {
