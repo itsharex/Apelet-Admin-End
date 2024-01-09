@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * @author valarchie
+ * 根据实际使用情况设置对应的guava缓存，通过使用AbstractGuavaCacheTemplate抽象类查询对应数据实现二级缓存
+ * 数据量小，且访问频繁，或者说一些不会变的静态配置数据，都可以放到本地缓存中
+ * @author xiaoyuan-zs
  */
 @Component
 @Slf4j

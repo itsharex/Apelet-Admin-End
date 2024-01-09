@@ -12,7 +12,6 @@ public enum ConfigKeyEnum implements BasicEnum<String> {
     /**
      * 菜单类型
      */
-    SKIN_THEME("sys.index.skinName", "系统皮肤主题"),
     INIT_PASSWORD("sys.user.initPassword", "初始密码"),
     SIDE_BAR_THEME("sys.index.sideTheme", "侧边栏开关"),
     CAPTCHA("sys.account.captchaOnOff", "验证码开关"),

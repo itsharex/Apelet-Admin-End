@@ -18,7 +18,7 @@ import javax.annotation.PostConstruct;
 import java.io.Serializable;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Component
 @RequiredArgsConstructor
@@ -35,6 +35,9 @@ public class RedisCacheService {
 
 //    public RedisCacheTemplate<RoleInfo> roleModelInfoCache;
 
+    /**
+     * 等待依赖注入之后，初始化执行
+     */
     @PostConstruct
     public void init() {
 
