@@ -26,7 +26,7 @@
 
         <dependency>
             <groupId>com.apelet</groupId>
-            <artifactId>apelet-core</artifactId>
+            <artifactId>apelet-framework</artifactId>
         </dependency>
 
         <dependency>

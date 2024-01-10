@@ -21,7 +21,7 @@
         <!-- 核心模块-->
         <dependency>
             <groupId>com.apelet</groupId>
-            <artifactId>apelet-core</artifactId>
+            <artifactId>apelet-framework</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>

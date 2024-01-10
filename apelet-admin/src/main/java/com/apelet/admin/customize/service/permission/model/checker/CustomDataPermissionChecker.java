@@ -4,7 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.apelet.admin.customize.service.permission.model.AbstractDataPermissionChecker;
 import com.apelet.admin.customize.service.permission.model.DataCondition;
 import com.apelet.domain.system.dept.db.SysDeptService;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.user.web.SystemLoginUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

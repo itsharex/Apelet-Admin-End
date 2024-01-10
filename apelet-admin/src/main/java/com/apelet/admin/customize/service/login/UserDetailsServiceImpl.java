@@ -12,9 +12,9 @@ import com.apelet.domain.system.role.db.SysRoleEntity;
 import com.apelet.domain.system.role.db.SysRoleService;
 import com.apelet.domain.system.user.db.SysUserEntity;
 import com.apelet.domain.system.user.db.SysUserService;
-import com.apelet.infrastructure.user.web.DataScopeEnum;
-import com.apelet.infrastructure.user.web.RoleInfo;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.user.web.DataScopeEnum;
+import com.apelet.framework.user.web.RoleInfo;
+import com.apelet.framework.user.web.SystemLoginUser;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.RequiredArgsConstructor;
@@ -36,8 +36,8 @@ import java.util.stream.Collectors;
  * 自定义加载用户信息通过用户名
  * 用于SpringSecurity 登录流程
  * 没有办法把这个类 放进loginService中  会在SecurityConfig中造成循环依赖
- * @see com.apelet.infrastructure.config.SecurityConfig#filterChain(HttpSecurity)
- * @author valarchie
+ * @see com.apelet.framework.config.SecurityConfig#filterChain(HttpSecurity)
+ * @author xiaoyuan-zs
  */
 @Service
 @Slf4j

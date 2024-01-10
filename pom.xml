@@ -20,7 +20,7 @@
         <module>apelet-api</module>
         <module>apelet-common</module>
         <module>apelet-domain</module>
-        <module>apelet-core</module>
+        <module>apelet-framework</module>
     </modules>
 
     <properties>
@@ -248,7 +248,7 @@
             <!-- 核心模块-->
             <dependency>
                 <groupId>com.apelet</groupId>
-                <artifactId>apelet-core</artifactId>
+                <artifactId>apelet-framework</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

@@ -84,7 +84,7 @@ spring:
 
 logging:
     file:
-        path: F:/study/java/github/Apelet-Admin-End/apelet-dev/logs
+        path: F:/study/java/github/Apelet-Admin-End/miscellaneous/apelet-dev/logs
 
 
 springdoc:
@@ -99,7 +99,7 @@ springdoc:
 # 项目相关配置
 apelet:
     # 文件基路径 示例（ Windows配置D:\agileboot，Linux配置 /home/agileboot）
-    file-base-dir: F:\study\java\github\Apelet-Admin-End\apelet-dev\files
+    file-base-dir: F:\study\java\github\Apelet-Admin-End\miscellaneous\apelet-dev\files
     # 前端url请求转发前缀
     api-prefix: /dev-api
     demo-enabled: false

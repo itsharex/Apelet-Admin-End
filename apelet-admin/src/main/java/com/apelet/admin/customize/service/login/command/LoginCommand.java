@@ -23,7 +23,7 @@ public class LoginCommand {
     /**
      * 验证码
      */
-    private String captchaCode;
+    private String verifyCode;
 
     /**
      * 唯一标识

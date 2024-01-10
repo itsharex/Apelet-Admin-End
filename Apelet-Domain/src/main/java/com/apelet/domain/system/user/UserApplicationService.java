@@ -21,7 +21,7 @@ import com.apelet.domain.system.user.dto.UserProfileDTO;
 import com.apelet.domain.system.user.model.UserModel;
 import com.apelet.domain.system.user.model.UserModelFactory;
 import com.apelet.domain.system.user.query.SearchUserQuery;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.user.web.SystemLoginUser;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;

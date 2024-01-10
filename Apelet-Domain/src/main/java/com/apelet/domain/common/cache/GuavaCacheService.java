@@ -4,7 +4,7 @@ package com.apelet.domain.common.cache;
 import com.apelet.domain.system.config.db.SysConfigService;
 import com.apelet.domain.system.dept.db.SysDeptEntity;
 import com.apelet.domain.system.dept.db.SysDeptService;
-import com.apelet.infrastructure.cache.guava.AbstractGuavaCacheTemplate;
+import com.apelet.framework.cache.guava.AbstractGuavaCacheTemplate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

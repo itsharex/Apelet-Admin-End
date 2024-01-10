@@ -60,6 +60,10 @@ public class SysMenuEntity extends BaseEntity<SysMenuEntity> {
     @TableField("permission")
     private String permission;
 
+    @ApiModelProperty("路由重定向")
+    @TableField("redirect")
+    private String redirect;
+
     @ApiModelProperty("路由元信息（前端根据这个信息进行逻辑处理）")
     @TableField("meta_info")
     private String metaInfo;

@@ -5,9 +5,9 @@ import com.apelet.domain.system.dept.db.SysDeptEntity;
 import com.apelet.domain.system.post.db.SysPostEntity;
 import com.apelet.domain.system.role.db.SysRoleEntity;
 import com.apelet.domain.system.user.db.SysUserEntity;
-import com.apelet.infrastructure.cache.guava.AbstractGuavaCacheTemplate;
-import com.apelet.infrastructure.cache.redis.RedisCacheTemplate;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.cache.guava.AbstractGuavaCacheTemplate;
+import com.apelet.framework.cache.redis.RedisCacheTemplate;
+import com.apelet.framework.user.web.SystemLoginUser;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

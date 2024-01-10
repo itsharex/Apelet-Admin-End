@@ -5,8 +5,8 @@ import com.apelet.admin.customize.service.permission.model.AbstractDataPermissio
 import com.apelet.admin.customize.service.permission.model.DataCondition;
 import com.apelet.domain.system.user.db.SysUserEntity;
 import com.apelet.domain.system.user.db.SysUserService;
-import com.apelet.infrastructure.user.AuthenticationUtils;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.user.AuthenticationUtils;
+import com.apelet.framework.user.web.SystemLoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

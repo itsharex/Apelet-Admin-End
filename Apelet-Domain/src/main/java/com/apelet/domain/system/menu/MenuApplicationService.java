@@ -15,7 +15,7 @@ import com.apelet.domain.system.menu.dto.RouterDTO;
 import com.apelet.domain.system.menu.model.MenuModel;
 import com.apelet.domain.system.menu.model.MenuModelFactory;
 import com.apelet.domain.system.menu.query.MenuQuery;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.user.web.SystemLoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

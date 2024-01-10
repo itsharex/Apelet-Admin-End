@@ -1,7 +1,7 @@
 package com.apelet.api.customize.config;
 
 import com.apelet.api.customize.service.JwtTokenService;
-import com.apelet.infrastructure.user.app.AppLoginUser;
+import com.apelet.framework.user.app.AppLoginUser;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

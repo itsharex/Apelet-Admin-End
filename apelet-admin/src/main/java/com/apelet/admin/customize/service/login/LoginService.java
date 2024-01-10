@@ -27,8 +27,8 @@ import com.apelet.domain.common.cache.GuavaCacheService;
 import com.apelet.domain.common.cache.MapCache;
 import com.apelet.domain.common.cache.RedisCacheService;
 import com.apelet.domain.system.user.db.SysUserEntity;
-import com.apelet.infrastructure.thread.ThreadPoolManager;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.thread.ThreadPoolManager;
+import com.apelet.framework.user.web.SystemLoginUser;
 import com.google.code.kaptcha.Producer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -78,7 +78,7 @@ public class LoginService {
         // 验证码开关
         if (isCaptchaOn()) {
             // 校验严重码
-            validateCaptcha(loginCommand.getUsername(), loginCommand.getCaptchaCode(), loginCommand.getCaptchaCodeKey());
+            validateCaptcha(loginCommand.getUsername(), loginCommand.getVerifyCode(), loginCommand.getCaptchaCodeKey());
         }
         // 用户验证
         Authentication authentication;
@@ -90,10 +90,10 @@ public class LoginService {
         } catch (BadCredentialsException e) {
             ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL,
                 MessageUtils.message("Business.LOGIN_WRONG_USER_PASSWORD")));
-            throw new ApiException(e, ErrorCode.Business.LOGIN_WRONG_USER_PASSWORD);
+            throw new ApiException(e, Business.LOGIN_WRONG_USER_PASSWORD);
         } catch (AuthenticationException e) {
             ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL, e.getMessage()));
-            throw new ApiException(e, ErrorCode.Business.LOGIN_ERROR, e.getMessage());
+            throw new ApiException(e, Business.LOGIN_ERROR, e.getMessage());
         } catch (Exception e) {
             ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL, e.getMessage()));
             throw new ApiException(e, Business.LOGIN_ERROR, e.getMessage());
@@ -137,7 +137,7 @@ public class LoginService {
             String answer = null;
             BufferedImage image = null;
 
-            // 生成验证码
+            // 生成验证码 获取验证码类型 math 数组计算 char 字符验证
             String captchaType = ApeletAdminConfig.getCaptchaType();
             if (Captcha.MATH_TYPE.equals(captchaType)) {
                 String capText = captchaProducerMath.createText();
@@ -211,6 +211,11 @@ public class LoginService {
         entity.updateById();
     }
 
+    /**
+     * 对前端传递的加密密码进行解密
+     * @param originalPassword 前端传递的加密密码
+     * @return
+     */
     public String decryptPassword(String originalPassword) {
         byte[] decryptBytes = SecureUtil.rsa(ApeletAdminConfig.getRsaPrivateKey(), null)
             .decrypt(Base64.decode(originalPassword), KeyType.PrivateKey);

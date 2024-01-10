@@ -2,7 +2,7 @@ package com.apelet.domain.system.monitor.dto;
 
 import com.apelet.domain.common.cache.CacheCenter;
 import com.apelet.domain.system.dept.db.SysDeptEntity;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.user.web.SystemLoginUser;
 import lombok.Data;
 
 /**

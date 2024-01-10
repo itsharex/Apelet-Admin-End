@@ -7,7 +7,7 @@ import com.apelet.common.constant.Constants.Token;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
 import com.apelet.domain.common.cache.RedisCacheService;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.user.web.SystemLoginUser;
 import io.jsonwebtoken.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

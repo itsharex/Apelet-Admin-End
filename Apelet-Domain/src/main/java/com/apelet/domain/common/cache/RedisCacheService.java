@@ -7,10 +7,10 @@ import com.apelet.domain.system.role.db.SysRoleEntity;
 import com.apelet.domain.system.role.db.SysRoleService;
 import com.apelet.domain.system.user.db.SysUserEntity;
 import com.apelet.domain.system.user.db.SysUserService;
-import com.apelet.infrastructure.cache.RedisUtil;
-import com.apelet.infrastructure.cache.redis.CacheKeyEnum;
-import com.apelet.infrastructure.cache.redis.RedisCacheTemplate;
-import com.apelet.infrastructure.user.web.SystemLoginUser;
+import com.apelet.framework.cache.RedisUtil;
+import com.apelet.framework.cache.redis.CacheKeyEnum;
+import com.apelet.framework.cache.redis.RedisCacheTemplate;
+import com.apelet.framework.user.web.SystemLoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

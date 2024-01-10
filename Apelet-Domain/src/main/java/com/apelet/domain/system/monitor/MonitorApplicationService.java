@@ -8,7 +8,7 @@ import com.apelet.domain.system.monitor.dto.OnlineUserDTO;
 import com.apelet.domain.system.monitor.dto.RedisCacheInfoDTO;
 import com.apelet.domain.system.monitor.dto.RedisCacheInfoDTO.CommandStatusDTO;
 import com.apelet.domain.system.monitor.dto.ServerInfo;
-import com.apelet.infrastructure.cache.redis.CacheKeyEnum;
+import com.apelet.framework.cache.redis.CacheKeyEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.connection.RedisServerCommands;
 import org.springframework.data.redis.core.RedisCallback;

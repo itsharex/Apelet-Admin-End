@@ -21,7 +21,7 @@
         <!-- 核心模块-->
         <dependency>
             <groupId>com.apelet</groupId>
-            <artifactId>apelet-core</artifactId>
+            <artifactId>apelet-framework</artifactId>
         </dependency>
 
         <!-- 业务领域 -->
