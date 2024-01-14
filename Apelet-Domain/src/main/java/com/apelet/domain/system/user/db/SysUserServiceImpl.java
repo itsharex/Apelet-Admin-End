@@ -3,6 +3,7 @@ package com.apelet.domain.system.user.db;
 import com.apelet.common.core.page.AbstractPageQuery;
 import com.apelet.domain.system.post.db.SysPostEntity;
 import com.apelet.domain.system.role.db.SysRoleEntity;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -71,8 +72,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
 
     @Override
     public SysUserEntity getUserByUserName(String userName) {
-        QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("username", userName);
+        LambdaQueryWrapper<SysUserEntity> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SysUserEntity::getUsername, userName);
         return this.getOne(queryWrapper);
     }
 

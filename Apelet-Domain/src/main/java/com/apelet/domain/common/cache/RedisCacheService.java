@@ -1,6 +1,7 @@
 package com.apelet.domain.common.cache;
 
 import cn.hutool.extra.spring.SpringUtil;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.post.db.SysPostEntity;
 import com.apelet.domain.system.post.db.SysPostService;
 import com.apelet.domain.system.role.db.SysRoleEntity;
@@ -10,7 +11,6 @@ import com.apelet.domain.system.user.db.SysUserService;
 import com.apelet.framework.cache.RedisUtil;
 import com.apelet.framework.cache.redis.CacheKeyEnum;
 import com.apelet.framework.cache.redis.RedisCacheTemplate;
-import com.apelet.framework.user.web.SystemLoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

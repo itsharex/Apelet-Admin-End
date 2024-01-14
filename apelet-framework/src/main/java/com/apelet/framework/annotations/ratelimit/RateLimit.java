@@ -3,10 +3,10 @@ package com.apelet.framework.annotations.ratelimit;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
+import com.apelet.common.user.app.AppLoginUser;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.common.utils.ServletHolderUtil;
-import com.apelet.framework.user.AuthenticationUtils;
-import com.apelet.framework.user.app.AppLoginUser;
-import com.apelet.framework.user.web.SystemLoginUser;
+import com.apelet.framework.security.AuthenticationUtils;
 
 import java.lang.annotation.*;
 

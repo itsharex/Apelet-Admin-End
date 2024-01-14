@@ -3,9 +3,9 @@ package com.apelet.admin.customize.service.permission;
 import cn.hutool.extra.spring.SpringUtil;
 import com.apelet.admin.customize.service.permission.model.AbstractDataPermissionChecker;
 import com.apelet.admin.customize.service.permission.model.checker.*;
+import com.apelet.common.enums.common.DataScopeEnum;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.dept.db.SysDeptService;
-import com.apelet.framework.user.web.DataScopeEnum;
-import com.apelet.framework.user.web.SystemLoginUser;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

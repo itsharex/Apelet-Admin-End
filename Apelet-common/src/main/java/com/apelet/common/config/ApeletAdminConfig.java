@@ -48,6 +48,12 @@ public class ApeletAdminConfig {
     private static boolean addressEnabled;
 
     /**
+     * 验证码类别 slideAndClick-滑动 graphical-图形
+     */
+    private static String captchaCategory;
+
+
+    /**
      * 验证码类型
      */
     private static String captchaType;
@@ -83,6 +89,13 @@ public class ApeletAdminConfig {
         ApeletAdminConfig.addressEnabled = addressEnabled;
     }
 
+    public static String getCaptchaCategory() {
+        return captchaCategory;
+    }
+
+    public void setCaptchaCategory(String captchaCategory) {
+        ApeletAdminConfig.captchaCategory = captchaCategory;
+    }
     public static String getCaptchaType() {
         return captchaType;
     }

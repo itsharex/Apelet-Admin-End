@@ -1,7 +1,7 @@
 package com.apelet.framework.mybatisplus;
 
-import com.apelet.framework.user.AuthenticationUtils;
-import com.apelet.framework.user.web.SystemLoginUser;
+import com.apelet.common.user.web.SystemLoginUser;
+import com.apelet.framework.security.AuthenticationUtils;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;

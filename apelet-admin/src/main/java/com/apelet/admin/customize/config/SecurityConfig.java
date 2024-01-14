@@ -9,10 +9,10 @@ import com.apelet.common.core.dto.ResponseDTO;
 import com.apelet.common.enums.common.LoginStatusEnum;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode.Client;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.common.utils.ServletHolderUtil;
 import com.apelet.domain.common.cache.RedisCacheService;
 import com.apelet.framework.thread.ThreadPoolManager;
-import com.apelet.framework.user.web.SystemLoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +39,7 @@ import org.springframework.web.filter.CorsFilter;
  * @see this#logOutSuccessHandler 用于退出登录成功后的逻辑
  * @see JwtAuthenticationTokenFilter#doFilter token的校验和刷新
  * @see LoginService#login 登录逻辑
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Configuration
 @EnableWebSecurity
@@ -56,7 +56,11 @@ public class SecurityConfig {
      */
     private final JwtAuthenticationTokenFilter jwtTokenFilter;
 
+    /**
+     * 自定义UserDetailsService实现类，查询数据库用户信息
+     */
     private final UserDetailsService userDetailsService;
+
 
     /**
      * 跨域过滤器
@@ -100,7 +104,7 @@ public class SecurityConfig {
     }
 
     /**
-     * 强散列哈希加密实现
+     * 强散列哈希加密实现， 取代原本的PasswordEncoder
      */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -109,12 +113,15 @@ public class SecurityConfig {
 
 
     /**
-     * 鉴权管理类
+     * 鉴权管理类，登录时导入这个调用该方法进行认证
      * @see UserDetailsServiceImpl#loadUserByUsername
      */
     @Bean
     public AuthenticationManager authManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
+                // 重写密码校验方法
+                .authenticationProvider(new UserAuthenticationProvider(userDetailsService, bCryptPasswordEncoder()))
+                // 定义了UserAuthenticationProvider就不能在使用默认的UserDetailsService，需要自定义UserDetailsService实现类，查询数据库用户信息
             .userDetailsService(userDetailsService)
             .passwordEncoder(bCryptPasswordEncoder())
             .and()
@@ -135,7 +142,7 @@ public class SecurityConfig {
             .authorizeRequests()
             // 对于登录login 注册register 验证码captchaImage 以及公共Api的请求允许匿名访问
             // 注意： 当携带token请求以下这几个接口时 会返回403的错误
-            .antMatchers("/login", "/register", "/getConfig", "/captchaImage", "/api/**").anonymous()
+            .antMatchers("/login", "/register", "/getConfig", "/captchaImage", "/captcha/**", "/api/**").anonymous()
             .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js",
                 "/profile/**").permitAll()
             // TODO this is danger.

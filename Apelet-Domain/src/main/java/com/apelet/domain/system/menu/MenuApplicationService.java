@@ -5,6 +5,7 @@ import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
 import com.apelet.common.enums.common.StatusEnum;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.menu.command.AddMenuCommand;
 import com.apelet.domain.system.menu.command.UpdateMenuCommand;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
@@ -15,7 +16,6 @@ import com.apelet.domain.system.menu.dto.RouterDTO;
 import com.apelet.domain.system.menu.model.MenuModel;
 import com.apelet.domain.system.menu.model.MenuModelFactory;
 import com.apelet.domain.system.menu.query.MenuQuery;
-import com.apelet.framework.user.web.SystemLoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -3,18 +3,18 @@ package com.apelet.admin.customize.service.login;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
 import com.apelet.common.enums.BasicEnumUtil;
+import com.apelet.common.enums.common.DataScopeEnum;
 import com.apelet.common.enums.common.UserStatusEnum;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
+import com.apelet.common.user.web.RoleInfo;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
 import com.apelet.domain.system.menu.db.SysMenuService;
 import com.apelet.domain.system.role.db.SysRoleEntity;
 import com.apelet.domain.system.role.db.SysRoleService;
 import com.apelet.domain.system.user.db.SysUserEntity;
 import com.apelet.domain.system.user.db.SysUserService;
-import com.apelet.framework.user.web.DataScopeEnum;
-import com.apelet.framework.user.web.RoleInfo;
-import com.apelet.framework.user.web.SystemLoginUser;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,6 @@ import java.util.stream.Collectors;
 /**
  * 自定义加载用户信息通过用户名
  * 用于SpringSecurity 登录流程
- * 没有办法把这个类 放进loginService中  会在SecurityConfig中造成循环依赖
  * @see com.apelet.framework.config.SecurityConfig#filterChain(HttpSecurity)
  * @author xiaoyuan-zs
  */

@@ -10,17 +10,22 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.extra.servlet.ServletUtil;
+import com.anji.captcha.model.common.ResponseModel;
+import com.anji.captcha.model.vo.CaptchaVO;
+import com.anji.captcha.service.CaptchaService;
 import com.apelet.admin.customize.async.AsyncTaskFactory;
 import com.apelet.admin.customize.service.login.command.LoginCommand;
 import com.apelet.admin.customize.service.login.dto.CaptchaDTO;
 import com.apelet.admin.customize.service.login.dto.ConfigDTO;
 import com.apelet.common.config.ApeletAdminConfig;
-import com.apelet.common.constant.Constants.Captcha;
+import com.apelet.common.constant.Constants;
+import com.apelet.common.enums.common.CaptchaTypeEnum;
 import com.apelet.common.enums.common.ConfigKeyEnum;
 import com.apelet.common.enums.common.LoginStatusEnum;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
 import com.apelet.common.exception.error.ErrorCode.Business;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.common.utils.ServletHolderUtil;
 import com.apelet.common.utils.i18n.MessageUtils;
 import com.apelet.domain.common.cache.GuavaCacheService;
@@ -28,7 +33,6 @@ import com.apelet.domain.common.cache.MapCache;
 import com.apelet.domain.common.cache.RedisCacheService;
 import com.apelet.domain.system.user.db.SysUserEntity;
 import com.apelet.framework.thread.ThreadPoolManager;
-import com.apelet.framework.user.web.SystemLoginUser;
 import com.google.code.kaptcha.Producer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +47,7 @@ import org.springframework.util.FastByteArrayOutputStream;
 
 import javax.annotation.Resource;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
 /**
  * 登录校验方法
@@ -62,6 +67,8 @@ public class LoginService {
 
     private final AuthenticationManager authenticationManager;
 
+    private final CaptchaService captchaService;
+
     @Resource(name = "captchaProducer")
     private Producer captchaProducer;
 
@@ -77,11 +84,24 @@ public class LoginService {
     public String login(LoginCommand loginCommand) {
         // 验证码开关
         if (isCaptchaOn()) {
-            // 校验严重码
-            validateCaptcha(loginCommand.getUsername(), loginCommand.getVerifyCode(), loginCommand.getCaptchaCodeKey());
+            if (Objects.equals(loginCommand.getCaptchaCategory(), CaptchaTypeEnum.CAPTCHA_TYPE_GRAPHICAL.getValue())) {
+                // 校验图形验证码
+                validateCaptcha(loginCommand.getUsername(), loginCommand.getVerifyCode(), loginCommand.getCaptchaCodeKey());
+            } else {
+                // 校验滑块、点击验证码
+                CaptchaVO captchaVO = new CaptchaVO();
+                captchaVO.setCaptchaVerification(loginCommand.getCaptchaVerification());
+                ResponseModel responseModel = captchaService.verification(captchaVO);
+                if (!responseModel.isSuccess()) {
+                    ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL,
+                            responseModel.getRepMsg()));
+                    throw new ApiException(Business.LOGIN_ERROR, responseModel.getRepMsg());
+                }
+            }
         }
         // 用户验证
         Authentication authentication;
+        // 对前端加密的密码进行解密
         String decryptPassword = decryptPassword(loginCommand.getPassword());
         try {
             // 该方法会去调用UserDetailsServiceImpl#loadUserByUsername  校验用户名和密码  认证鉴权
@@ -122,24 +142,28 @@ public class LoginService {
     }
 
     /**
-     * 获取验证码 data
+     * 获取图形验证码 data
      *
      * @return 验证码
      */
     public CaptchaDTO generateCaptchaImg() {
         CaptchaDTO captchaDTO = new CaptchaDTO();
-
+        // 查看是否开启验证码
         boolean isCaptchaOn = isCaptchaOn();
+        // 查看验证码类别
+        String captchaCategory = ApeletAdminConfig.getCaptchaCategory();
         captchaDTO.setIsCaptchaOn(isCaptchaOn);
-
-        if (isCaptchaOn) {
+        if (!isCaptchaOn) return captchaDTO;
+        captchaDTO.setCaptchaCategory(captchaCategory);
+        captchaDTO.setIsGraphical(Objects.equals(captchaCategory, CaptchaTypeEnum.CAPTCHA_TYPE_GRAPHICAL.getValue()));
+        if (captchaDTO.getIsGraphical()) {
             String expression;
             String answer = null;
             BufferedImage image = null;
 
             // 生成验证码 获取验证码类型 math 数组计算 char 字符验证
             String captchaType = ApeletAdminConfig.getCaptchaType();
-            if (Captcha.MATH_TYPE.equals(captchaType)) {
+            if (Constants.Captcha.MATH_TYPE.equals(captchaType)) {
                 String capText = captchaProducerMath.createText();
                 String[] expressionAndAnswer = capText.split("@");
                 expression = expressionAndAnswer[0];
@@ -147,28 +171,22 @@ public class LoginService {
                 image = captchaProducerMath.createImage(expression);
             }
 
-            if (Captcha.CHAR_TYPE.equals(captchaType)) {
+            if (Constants.Captcha.CHAR_TYPE.equals(captchaType)) {
                 expression = answer = captchaProducer.createText();
                 image = captchaProducer.createImage(expression);
             }
-
             if (image == null) {
                 throw new ApiException(ErrorCode.Internal.LOGIN_CAPTCHA_GENERATE_FAIL);
             }
-
             // 保存验证码信息
             String imgKey = IdUtil.simpleUUID();
-
             redisCache.captchaCache.set(imgKey, answer);
             // 转换流信息写出
             FastByteArrayOutputStream os = new FastByteArrayOutputStream();
             ImgUtil.writeJpg(image, os);
-
             captchaDTO.setCaptchaCodeKey(imgKey);
             captchaDTO.setCaptchaCodeImg(Base64.encode(os.toByteArray()));
-
         }
-
         return captchaDTO;
     }
 

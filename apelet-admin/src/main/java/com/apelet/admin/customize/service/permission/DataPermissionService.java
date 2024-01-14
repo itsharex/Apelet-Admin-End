@@ -3,10 +3,10 @@ package com.apelet.admin.customize.service.permission;
 import cn.hutool.core.collection.CollUtil;
 import com.apelet.admin.customize.service.permission.model.AbstractDataPermissionChecker;
 import com.apelet.admin.customize.service.permission.model.DataCondition;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.user.db.SysUserEntity;
 import com.apelet.domain.system.user.db.SysUserService;
-import com.apelet.framework.user.AuthenticationUtils;
-import com.apelet.framework.user.web.SystemLoginUser;
+import com.apelet.framework.security.AuthenticationUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

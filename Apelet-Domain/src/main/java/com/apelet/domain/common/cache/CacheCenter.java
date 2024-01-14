@@ -1,13 +1,13 @@
 package com.apelet.domain.common.cache;
 
 import cn.hutool.extra.spring.SpringUtil;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.dept.db.SysDeptEntity;
 import com.apelet.domain.system.post.db.SysPostEntity;
 import com.apelet.domain.system.role.db.SysRoleEntity;
 import com.apelet.domain.system.user.db.SysUserEntity;
 import com.apelet.framework.cache.guava.AbstractGuavaCacheTemplate;
 import com.apelet.framework.cache.redis.RedisCacheTemplate;
-import com.apelet.framework.user.web.SystemLoginUser;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

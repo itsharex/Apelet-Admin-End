@@ -13,10 +13,16 @@
     <artifactId>apelet-framework</artifactId>
 
     <description>
-        core框架核心
+        framework框架核心
     </description>
 
     <dependencies>
+
+        <!-- 通用模块-->
+        <dependency>
+            <groupId>com.apelet</groupId>
+            <artifactId>apelet-common</artifactId>
+        </dependency>
 
         <!-- SpringBoot Web容器 -->
          <dependency>
@@ -48,19 +54,17 @@
             </exclusions>
         </dependency>
 
+        <!-- 滑动/点击验证码 -->
+        <dependency>
+            <groupId>com.anji-plus</groupId>
+            <artifactId>spring-boot-starter-captcha</artifactId>
+        </dependency>
+
         <!-- 获取系统信息 -->
         <dependency>
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
         </dependency>
-
-
-        <!-- 通用模块-->
-        <dependency>
-            <groupId>com.apelet</groupId>
-            <artifactId>apelet-common</artifactId>
-        </dependency>
-
 
         <!-- mybatis plus 代码生成器依赖 -->
         <dependency>

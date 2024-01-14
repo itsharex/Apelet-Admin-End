@@ -1,8 +1,8 @@
 package com.apelet.admin.customize.config;
 
 import com.apelet.admin.customize.service.login.TokenService;
-import com.apelet.framework.user.AuthenticationUtils;
-import com.apelet.framework.user.web.SystemLoginUser;
+import com.apelet.common.user.web.SystemLoginUser;
+import com.apelet.framework.security.AuthenticationUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

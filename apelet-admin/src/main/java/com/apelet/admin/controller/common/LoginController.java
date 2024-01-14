@@ -9,6 +9,7 @@ import com.apelet.common.config.ApeletAdminConfig;
 import com.apelet.common.core.dto.ResponseDTO;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode.Business;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.common.dto.CurrentLoginUserDTO;
 import com.apelet.domain.common.dto.TokenDTO;
 import com.apelet.domain.system.menu.MenuApplicationService;
@@ -19,8 +20,7 @@ import com.apelet.framework.annotations.ratelimit.RateLimit;
 import com.apelet.framework.annotations.ratelimit.RateLimit.CacheType;
 import com.apelet.framework.annotations.ratelimit.RateLimit.LimitType;
 import com.apelet.framework.annotations.ratelimit.RateLimitKey;
-import com.apelet.framework.user.AuthenticationUtils;
-import com.apelet.framework.user.web.SystemLoginUser;
+import com.apelet.framework.security.AuthenticationUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -74,7 +74,7 @@ public class LoginController {
     }
 
     /**
-     * 生成验证码
+     * 获取验证码
      */
     @Operation(summary = "验证码")
     @RateLimit(key = RateLimitKey.LOGIN_CAPTCHA_KEY, time = 10, maxCount = 10, cacheType = CacheType.REDIS,
@@ -94,6 +94,7 @@ public class LoginController {
     @Operation(summary = "登录")
     @PostMapping("/login")
     public ResponseDTO<TokenDTO> login(@RequestBody LoginCommand loginCommand) {
+
         // 生成令牌
         String token = loginService.login(loginCommand);
         SystemLoginUser loginUser = AuthenticationUtils.getSystemLoginUser();

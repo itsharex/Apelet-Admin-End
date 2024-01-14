@@ -98,6 +98,8 @@ public enum ErrorCode implements ErrorCodeInterface {
 
         LOGIN_CAPTCHA_CODE_NULL(10205, "验证码为空", "Business.LOGIN_CAPTCHA_CODE_NULL"),
 
+        LOGIN_PRESENTED_NO_MATCH_PASSWORD(10206, "密码匹配失败", "Business.LOGIN_PRESENTED_NO_MATCH_PASSWORD"),
+
         // ----------------------------- UPLOAD -----------------------------------------
 
         UPLOAD_FILE_TYPE_NOT_ALLOWED(10401, "不允许上传的文件类型，仅允许：{}", "Business.UPLOAD_FILE_TYPE_NOT_ALLOWED"),
@@ -368,6 +370,8 @@ public enum ErrorCode implements ErrorCodeInterface {
         DB_INTERNAL_ERROR(5, "数据库异常", "Internal.DB_INTERNAL_ERROR"),
 
         LOGIN_CAPTCHA_GENERATE_FAIL(7, "验证码生成失败", "Internal.LOGIN_CAPTCHA_GENERATE_FAIL"),
+
+
 
         EXCEL_PROCESS_ERROR(8, "excel处理失败：{}", "Internal.EXCEL_PROCESS_ERROR"),
 

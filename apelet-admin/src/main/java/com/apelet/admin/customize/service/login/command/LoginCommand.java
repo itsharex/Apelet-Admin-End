@@ -21,7 +21,7 @@ public class LoginCommand {
     private String password;
 
     /**
-     * 验证码
+     * 图形验证码
      */
     private String verifyCode;
 
@@ -29,5 +29,15 @@ public class LoginCommand {
      * 唯一标识
      */
     private String captchaCodeKey;
+
+    /**
+     * 验证码类别
+     */
+    private String captchaCategory;
+
+    /**
+     * 滑动、点击验证码二次校验token
+     */
+    private String captchaVerification;
 
 }

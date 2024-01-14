@@ -2,6 +2,7 @@ package com.apelet.domain.system.user;
 
 import cn.hutool.core.convert.Convert;
 import com.apelet.common.core.page.PageDTO;
+import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.common.cache.CacheCenter;
 import com.apelet.domain.common.command.BulkOperationCommand;
 import com.apelet.domain.common.dto.CurrentLoginUserDTO;
@@ -21,7 +22,6 @@ import com.apelet.domain.system.user.dto.UserProfileDTO;
 import com.apelet.domain.system.user.model.UserModel;
 import com.apelet.domain.system.user.model.UserModelFactory;
 import com.apelet.domain.system.user.query.SearchUserQuery;
-import com.apelet.framework.user.web.SystemLoginUser;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;

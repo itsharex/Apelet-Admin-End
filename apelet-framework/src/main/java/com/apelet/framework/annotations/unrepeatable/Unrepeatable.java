@@ -1,9 +1,9 @@
 package com.apelet.framework.annotations.unrepeatable;
 
 import cn.hutool.core.util.StrUtil;
-import com.apelet.framework.user.AuthenticationUtils;
-import com.apelet.framework.user.app.AppLoginUser;
-import com.apelet.framework.user.web.SystemLoginUser;
+import com.apelet.common.user.app.AppLoginUser;
+import com.apelet.common.user.web.SystemLoginUser;
+import com.apelet.framework.security.AuthenticationUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.*;
