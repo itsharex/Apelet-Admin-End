@@ -19,7 +19,6 @@ import com.apelet.admin.customize.service.login.dto.CaptchaDTO;
 import com.apelet.admin.customize.service.login.dto.ConfigDTO;
 import com.apelet.common.config.ApeletAdminConfig;
 import com.apelet.common.constant.Constants;
-import com.apelet.common.enums.common.CaptchaTypeEnum;
 import com.apelet.common.enums.common.ConfigKeyEnum;
 import com.apelet.common.enums.common.LoginStatusEnum;
 import com.apelet.common.exception.ApiException;
@@ -47,7 +46,6 @@ import org.springframework.util.FastByteArrayOutputStream;
 
 import javax.annotation.Resource;
 import java.awt.image.BufferedImage;
-import java.util.Objects;
 
 /**
  * 登录校验方法
@@ -84,19 +82,16 @@ public class LoginService {
     public String login(LoginCommand loginCommand) {
         // 验证码开关
         if (isCaptchaOn()) {
-            if (Objects.equals(loginCommand.getCaptchaCategory(), CaptchaTypeEnum.CAPTCHA_TYPE_GRAPHICAL.getValue())) {
-                // 校验图形验证码
-                validateCaptcha(loginCommand.getUsername(), loginCommand.getVerifyCode(), loginCommand.getCaptchaCodeKey());
-            } else {
-                // 校验滑块、点击验证码
-                CaptchaVO captchaVO = new CaptchaVO();
-                captchaVO.setCaptchaVerification(loginCommand.getCaptchaVerification());
-                ResponseModel responseModel = captchaService.verification(captchaVO);
-                if (!responseModel.isSuccess()) {
-                    ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL,
-                            responseModel.getRepMsg()));
-                    throw new ApiException(Business.LOGIN_ERROR, responseModel.getRepMsg());
-                }
+            // 校验图形验证码
+            // validateCaptcha(loginCommand.getUsername(), loginCommand.getVerifyCode(), loginCommand.getCaptchaCodeKey());
+            // 校验滑块、点选验证码
+            CaptchaVO captchaVO = new CaptchaVO();
+            captchaVO.setCaptchaVerification(loginCommand.getCaptchaVerification());
+            ResponseModel responseModel = captchaService.verification(captchaVO);
+            if (!responseModel.isSuccess()) {
+                ThreadPoolManager.execute(AsyncTaskFactory.loginInfoTask(loginCommand.getUsername(), LoginStatusEnum.LOGIN_FAIL,
+                        responseModel.getRepMsg()));
+                throw new ApiException(Business.LOGIN_ERROR, responseModel.getRepMsg());
             }
         }
         // 用户验证
@@ -142,6 +137,18 @@ public class LoginService {
     }
 
     /**
+     * 查看验证码是否开启以及获取验证码类别
+     * @return {@link CaptchaDTO}
+     */
+    public CaptchaDTO getCaptchaType() {
+        CaptchaDTO captchaDTO = new CaptchaDTO();
+        boolean isCaptchaOn = isCaptchaOn();
+        captchaDTO.setIsCaptchaOn(isCaptchaOn);
+        if (isCaptchaOn) captchaDTO.setCaptchaCategory(ApeletAdminConfig.getCaptchaCategory());
+        return captchaDTO;
+    }
+
+    /**
      * 获取图形验证码 data
      *
      * @return 验证码
@@ -150,13 +157,8 @@ public class LoginService {
         CaptchaDTO captchaDTO = new CaptchaDTO();
         // 查看是否开启验证码
         boolean isCaptchaOn = isCaptchaOn();
-        // 查看验证码类别
-        String captchaCategory = ApeletAdminConfig.getCaptchaCategory();
         captchaDTO.setIsCaptchaOn(isCaptchaOn);
-        if (!isCaptchaOn) return captchaDTO;
-        captchaDTO.setCaptchaCategory(captchaCategory);
-        captchaDTO.setIsGraphical(Objects.equals(captchaCategory, CaptchaTypeEnum.CAPTCHA_TYPE_GRAPHICAL.getValue()));
-        if (captchaDTO.getIsGraphical()) {
+        if (isCaptchaOn) {
             String expression;
             String answer = null;
             BufferedImage image = null;

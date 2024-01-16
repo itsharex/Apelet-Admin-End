@@ -142,7 +142,7 @@ public class SecurityConfig {
             .authorizeRequests()
             // 对于登录login 注册register 验证码captchaImage 以及公共Api的请求允许匿名访问
             // 注意： 当携带token请求以下这几个接口时 会返回403的错误
-            .antMatchers("/login", "/register", "/getConfig", "/captchaImage", "/captcha/**", "/api/**").anonymous()
+            .antMatchers("/login", "/register", "/getConfig", "/captchaImage", "/captcha/**", "/reCaptcha/*", "/api/**").anonymous()
             .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js",
                 "/profile/**").permitAll()
             // TODO this is danger.

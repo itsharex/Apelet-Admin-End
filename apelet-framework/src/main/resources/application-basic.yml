@@ -11,8 +11,8 @@ apelet:
   demo-enabled: true
   # 获取ip地址开关
   addressEnabled: false
-  # 验证码类别 blockPuzzle 滑块 clickWord 点击文字 graphical-图形
-  captchaCategory: clickWord
+  # 验证码类别 blockPuzzle 滑块 clickWord 点选     graphical-图形（前端需更改对应逻辑）
+  captchaCategory: blockPuzzle
   # 图形验证码类型 math 数组计算 char 字符验证
   captchaType: math
   # 对应的公钥放在前端项目中的utils/rsaUtils类中
@@ -131,7 +131,7 @@ aj:
     cache-type: redis
     jigsaw: classpath:images/jigsaw
     pic-click: classpath:images/pic-click
-    type: default  # blockPuzzle 滑块 clickWord 点击文字，default 两者都初始化
+    type: default  # blockPuzzle 滑块 clickWord 点选，default 两者都初始化
     font-type: 宋体
     # 校验滑动拼图允许误差偏移量(默认5像素)
     slip-offset: 5
