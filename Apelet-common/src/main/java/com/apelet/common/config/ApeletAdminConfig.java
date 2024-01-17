@@ -48,7 +48,7 @@ public class ApeletAdminConfig {
     private static boolean addressEnabled;
 
     /**
-     * 验证码类别 slideAndClick-滑动 graphical-图形
+     * 验证码类别 blockPuzzle 滑块 clickWord 点击文字     graphical-图形（前端需更改对应逻辑）
      */
     private static String captchaCategory;
 
