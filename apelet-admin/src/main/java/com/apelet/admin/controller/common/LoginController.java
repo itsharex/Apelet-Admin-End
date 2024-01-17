@@ -1,8 +1,6 @@
 package com.apelet.admin.controller.common;
 
 import cn.hutool.core.util.StrUtil;
-import com.anji.captcha.model.common.ResponseModel;
-import com.anji.captcha.model.vo.CaptchaVO;
 import com.anji.captcha.service.CaptchaService;
 import com.apelet.admin.customize.service.login.LoginService;
 import com.apelet.admin.customize.service.login.command.LoginCommand;
@@ -62,8 +60,7 @@ public class LoginController {
     @RateLimit(key = RateLimitKey.TEST_KEY, time = 10, maxCount = 5, cacheType = CacheType.Map,
         limitType = LimitType.GLOBAL)
     public String index() {
-        return StrUtil.format("欢迎使用{}后台管理框架，当前版本：v{}，请通过前端地址访问。",
-                apeletAdminConfig.getName(), apeletAdminConfig.getVersion());
+        return StrUtil.format("欢迎使用{}后台管理框架，当前版本：v{}，请通过前端地址访问。", apeletAdminConfig.getName(), apeletAdminConfig.getVersion());
     }
 
 
@@ -79,47 +76,9 @@ public class LoginController {
     }
 
     /**
-     * 查看验证码是否开启以及获取验证码类别
-     * @return 验证码信息
+     *  获取图形验证码
      */
-    @GetMapping("/reCaptcha/type")
-    public ResponseDTO<CaptchaDTO> getCaptchaType() {
-        CaptchaDTO captchaType = loginService.getCaptchaType();
-        return ResponseDTO.ok(captchaType);
-    }
-
-    /**
-     * 生成滑块、点选验证码
-     * @param captchaVO
-     * @return
-     */
-    @Operation(summary ="生成滑块、点选验证码")
-    @RateLimit(key = RateLimitKey.LOGIN_CAPTCHA_KEY, time = 10, maxCount = 10, cacheType = CacheType.REDIS,
-            limitType = LimitType.IP)
-    @PostMapping("/reCaptcha/get")
-    public ResponseDTO<CaptchaVO> captchaGet(@RequestBody CaptchaVO captchaVO) {
-        ResponseModel responseModel = captchaService.get(captchaVO);
-        return ResponseDTO.ok((CaptchaVO)responseModel.getRepData());
-    }
-
-    /**
-     * 滑块、点选验证码验证
-     * @param captchaVO
-     * @return
-     */
-    @Operation(summary ="滑块、点选验证码验证")
-    @RateLimit(key = RateLimitKey.LOGIN_CAPTCHA_KEY, time = 10, maxCount = 10, cacheType = CacheType.REDIS,
-            limitType = LimitType.IP)
-    @PostMapping("/reCaptcha/check")
-    public ResponseDTO<CaptchaVO> captchaCheck(@RequestBody CaptchaVO captchaVO) {
-        ResponseModel responseModel = captchaService.check(captchaVO);
-        return ResponseDTO.ok((CaptchaVO)responseModel.getRepData());
-    }
-
-    /**
-     * 获取图形验证码
-     */
-    @Operation(summary = "图形验证码")
+    @Operation(summary = "验证码")
     @RateLimit(key = RateLimitKey.LOGIN_CAPTCHA_KEY, time = 10, maxCount = 10, cacheType = CacheType.REDIS,
         limitType = LimitType.IP)
     @GetMapping("/captchaImage")
