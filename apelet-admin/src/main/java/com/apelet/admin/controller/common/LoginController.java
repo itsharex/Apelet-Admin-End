@@ -89,11 +89,11 @@ public class LoginController {
     }
 
     /**
-     * 生成滑动、点选验证码
+     * 生成滑块、点选验证码
      * @param captchaVO
      * @return
      */
-    @Operation(summary ="生成滑动、点选验证码")
+    @Operation(summary ="生成滑块、点选验证码")
     @RateLimit(key = RateLimitKey.LOGIN_CAPTCHA_KEY, time = 10, maxCount = 10, cacheType = CacheType.REDIS,
             limitType = LimitType.IP)
     @PostMapping("/reCaptcha/get")
@@ -103,11 +103,11 @@ public class LoginController {
     }
 
     /**
-     * 滑动验证码验证
+     * 滑块、点选验证码验证
      * @param captchaVO
      * @return
      */
-    @Operation(summary ="滑动验证码验证")
+    @Operation(summary ="滑块、点选验证码验证")
     @RateLimit(key = RateLimitKey.LOGIN_CAPTCHA_KEY, time = 10, maxCount = 10, cacheType = CacheType.REDIS,
             limitType = LimitType.IP)
     @PostMapping("/reCaptcha/check")
@@ -119,7 +119,7 @@ public class LoginController {
     /**
      * 获取图形验证码
      */
-    @Operation(summary = "验证码")
+    @Operation(summary = "图形验证码")
     @RateLimit(key = RateLimitKey.LOGIN_CAPTCHA_KEY, time = 10, maxCount = 10, cacheType = CacheType.REDIS,
         limitType = LimitType.IP)
     @GetMapping("/captchaImage")
