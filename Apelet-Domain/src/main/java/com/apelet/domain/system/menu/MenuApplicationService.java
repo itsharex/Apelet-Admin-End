@@ -148,9 +148,9 @@ public class MenuApplicationService {
         List<RouterDTO> routers = new LinkedList<>();
         if (CollUtil.isNotEmpty(trees)) {
             for (Tree<Long> tree : trees) {
-                Object entity = tree.get("entity");
+                SysMenuEntity entity = (SysMenuEntity)tree.get("entity");
                 if (entity != null) {
-                    RouterDTO routerDTO = new RouterDTO((SysMenuEntity) entity);
+                    RouterDTO routerDTO = new RouterDTO(entity);
                     List<Tree<Long>> children = tree.getChildren();
                     if (CollUtil.isNotEmpty(children)) {
                         routerDTO.setChildren(buildRouterTree(children));

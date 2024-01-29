@@ -17,7 +17,7 @@ import java.io.Serializable;
  * 菜单权限表
  * </p>
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  * @since 2023-07-21
  */
 @Getter
@@ -48,9 +48,13 @@ public class SysMenuEntity extends BaseEntity<SysMenuEntity> {
     @TableField("parent_id")
     private Long parentId;
 
-    @ApiModelProperty("组件路径（对应前端项目view文件夹中的路径）")
+    @ApiModelProperty("路由path")
     @TableField("path")
     private String path;
+
+    @ApiModelProperty("组件路径（对应前端项目view文件夹中的路径）")
+    @TableField("component")
+    private String component;
 
     @ApiModelProperty("是否按钮")
     @TableField("is_button")

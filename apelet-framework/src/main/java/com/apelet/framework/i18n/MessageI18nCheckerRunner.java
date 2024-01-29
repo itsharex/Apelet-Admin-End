@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class MessageI18nCheckerRunner implements ApplicationRunner {
 
-    @Value("agileboot.checkI18nKey")
+    @Value("apelet.checkI18nKey")
     private String checkI18nKey;
 
     public static Object[] allErrorCodes = ArrayUtil.addAll(

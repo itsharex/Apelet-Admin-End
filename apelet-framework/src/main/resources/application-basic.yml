@@ -12,7 +12,7 @@ apelet:
   # 获取ip地址开关
   addressEnabled: false
   # 验证码类别 blockPuzzle 滑块 clickWord 点选     graphical-图形（前端需更改对应逻辑）
-  captchaCategory: blockPuzzle
+  captchaCategory: clickWord
   # 图形验证码类型 math 数组计算 char 字符验证
   captchaType: math
   # 对应的公钥放在前端项目中的utils/rsaUtils类中
