@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * 动态路由信息
@@ -27,7 +26,7 @@ public class RouterDTO {
             this.path = entity.getPath();
             this.component = entity.getComponent();
 //            this.rank = entity.getRank();
-            if (!StrUtil.isEmpty(entity.getRedirect()) && !Objects.equals(entity.getRedirect(), "noRedirect")) {
+            if (!StrUtil.isEmpty(entity.getRedirect())) {
                 this.redirect = entity.getRedirect();
             }
             if (JacksonUtil.isJson(entity.getMetaInfo())) {
