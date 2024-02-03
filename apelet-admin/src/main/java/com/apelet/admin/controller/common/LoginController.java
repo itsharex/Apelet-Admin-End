@@ -15,6 +15,8 @@ import com.apelet.common.exception.error.ErrorCode.Business;
 import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.common.dto.CurrentLoginUserDTO;
 import com.apelet.domain.common.dto.TokenDTO;
+import com.apelet.domain.system.locals.LocalsApplicationService;
+import com.apelet.domain.system.locals.dto.LocalsDTO;
 import com.apelet.domain.system.menu.MenuApplicationService;
 import com.apelet.domain.system.menu.dto.RouterDTO;
 import com.apelet.domain.system.user.UserApplicationService;
@@ -49,6 +51,8 @@ public class LoginController {
     private final MenuApplicationService menuApplicationService;
 
     private final UserApplicationService userApplicationService;
+
+    private final LocalsApplicationService localsApplicationService;
 
     private final ApeletAdminConfig apeletAdminConfig;
 
@@ -140,10 +144,7 @@ public class LoginController {
 
         // 生成令牌
         String token = loginService.login(loginCommand);
-        SystemLoginUser loginUser = AuthenticationUtils.getSystemLoginUser();
-        CurrentLoginUserDTO currentUserDTO = userApplicationService.getLoginUserInfo(loginUser);
-
-        return ResponseDTO.ok(new TokenDTO(token, currentUserDTO));
+        return ResponseDTO.ok(new TokenDTO(token));
     }
 
     /**
@@ -172,6 +173,18 @@ public class LoginController {
         SystemLoginUser loginUser = AuthenticationUtils.getSystemLoginUser();
         List<RouterDTO> routerTree = menuApplicationService.getRouterTree(loginUser);
         return ResponseDTO.ok(routerTree);
+    }
+
+
+    /**
+     * 获取i18n信息
+     * @return i18n信息
+     */
+    @Operation(summary = "获取菜单对应的i18n信息")
+    @GetMapping("/getInternational")
+    public ResponseDTO<List<LocalsDTO>> getInternational() {
+        List<LocalsDTO> locals = localsApplicationService.getInternational();
+        return ResponseDTO.ok(locals);
     }
 
 

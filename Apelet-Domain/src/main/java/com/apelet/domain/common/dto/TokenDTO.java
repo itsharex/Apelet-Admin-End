@@ -4,14 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 @AllArgsConstructor
 public class TokenDTO {
-
     private String token;
-
-    private CurrentLoginUserDTO currentUser;
 
 }

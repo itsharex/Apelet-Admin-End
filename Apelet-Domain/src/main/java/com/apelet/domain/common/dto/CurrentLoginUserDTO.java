@@ -15,5 +15,4 @@ public class CurrentLoginUserDTO {
     private String roleKey;
     private Set<String> permissions;
 
-
 }
