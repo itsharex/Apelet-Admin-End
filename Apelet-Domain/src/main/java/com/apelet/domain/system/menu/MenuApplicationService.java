@@ -4,8 +4,12 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
+import cn.hutool.core.util.StrUtil;
 import com.apelet.common.enums.common.StatusEnum;
 import com.apelet.common.user.web.SystemLoginUser;
+import com.apelet.domain.system.locals.command.AddLocalsCommand;
+import com.apelet.domain.system.locals.model.LocalsModel;
+import com.apelet.domain.system.locals.model.LocalsModelFactory;
 import com.apelet.domain.system.menu.command.AddMenuCommand;
 import com.apelet.domain.system.menu.command.UpdateMenuCommand;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
@@ -22,6 +26,7 @@ import org.springframework.stereotype.Service;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 /**
@@ -35,6 +40,8 @@ public class MenuApplicationService {
     private final SysMenuService menuService;
 
     private final MenuModelFactory menuModelFactory;
+
+    private final LocalsModelFactory localsModelFactory;
 
 
     public List<MenuDTO> getMenuList(MenuQuery query) {
@@ -69,6 +76,10 @@ public class MenuApplicationService {
         model.checkExternalLink();
 
         model.insert();
+
+        LocalsModel localsModel = localsModelFactory.create();
+        localsModel.loadLocalsByMenuId(model.getMenuId(), addCommand);
+        localsModel.insert();
     }
 
     public void updateMenu(UpdateMenuCommand updateCommand) {

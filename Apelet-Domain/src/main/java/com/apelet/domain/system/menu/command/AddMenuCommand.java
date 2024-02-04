@@ -21,10 +21,16 @@ public class AddMenuCommand {
      */
     private String routerName;
 
+    /**
+     * 国际化英文值
+     */
+    private String localsEnValue;
+
     @Size(max = 200, message = "路由地址不能超过200个字符")
     private String path;
 
     private Integer status;
+
     private Integer menuType;
 
     private Boolean isButton;
