@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 
 /**
  * @see PasswordEncoder 需要SpringSecurity配置类传递passwordEncoder， 否则PasswordEncoder为 null
- * @see userDetailsService 需要SpringSecurity配置类传递userDetailsService， 否则UserDetailsService为 null
+ * @see UserDetailsService 需要SpringSecurity配置类传递userDetailsService， 否则UserDetailsService为 null
  */
 @Slf4j
 public class UserAuthenticationProvider extends DaoAuthenticationProvider {

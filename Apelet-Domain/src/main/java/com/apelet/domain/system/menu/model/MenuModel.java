@@ -1,11 +1,15 @@
 package com.apelet.domain.system.menu.model;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.StrUtil;
 import com.apelet.common.enums.common.MenuTypeEnum;
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
 import com.apelet.common.exception.error.ErrorCode.Business;
 import com.apelet.common.utils.jackson.JacksonUtil;
+import com.apelet.domain.system.locals.command.AddLocalsCommand;
+import com.apelet.domain.system.locals.model.LocalsModel;
+import com.apelet.domain.system.locals.model.LocalsModelFactory;
 import com.apelet.domain.system.menu.command.AddMenuCommand;
 import com.apelet.domain.system.menu.command.UpdateMenuCommand;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
@@ -36,7 +40,9 @@ public class MenuModel extends SysMenuEntity {
     public void loadAddCommand(AddMenuCommand command) {
         if (command != null) {
             BeanUtil.copyProperties(command, this, "menuId");
-
+            if (StrUtil.isEmpty(command.getMeta().getTitle())) {
+                command.getMeta().setTitle("menus." + command.getPath());
+            }
             String metaInfo = JacksonUtil.to(command.getMeta());
             this.setMetaInfo(metaInfo);
         }

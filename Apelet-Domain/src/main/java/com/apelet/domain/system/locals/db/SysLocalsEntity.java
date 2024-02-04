@@ -1,5 +1,6 @@
 package com.apelet.domain.system.locals.db;
 
+import com.apelet.common.core.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -11,7 +12,7 @@ import lombok.Data;
 @Data
 @TableName("sys_locals")
 @ApiModel(value = "SysLocalsEntity对象", description = "i18n 表")
-public class SysLocalsEntity {
+public class SysLocalsEntity extends BaseEntity<SysLocalsEntity> {
 
     private static final long serialVersionUID = 1L;
 
