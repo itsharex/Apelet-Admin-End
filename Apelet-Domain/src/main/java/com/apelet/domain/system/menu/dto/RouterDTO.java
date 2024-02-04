@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 动态路由信息
@@ -32,7 +33,11 @@ public class RouterDTO {
             }
             if (JacksonUtil.isJson(entity.getMetaInfo())) {
                 MetaDTO metaDTO = JacksonUtil.from(entity.getMetaInfo(), MetaDTO.class);
-                metaDTO.setTitle(locale.getLocalsLabel());
+                if (!Objects.isNull(locale) && StrUtil.isNotEmpty(locale.getLocalsLabel())) {
+                    metaDTO.setTitle(locale.getLocalsLabel());
+                } else {
+                    metaDTO.setTitle("menus." + entity.getPath());
+                }
                 this.meta = metaDTO;
             } else {
                 this.meta = new MetaDTO();
