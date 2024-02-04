@@ -8,6 +8,8 @@ import cn.hutool.core.util.StrUtil;
 import com.apelet.common.enums.common.StatusEnum;
 import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.locals.command.AddLocalsCommand;
+import com.apelet.domain.system.locals.db.SysLocalsEntity;
+import com.apelet.domain.system.locals.db.SysLocalsService;
 import com.apelet.domain.system.locals.model.LocalsModel;
 import com.apelet.domain.system.locals.model.LocalsModelFactory;
 import com.apelet.domain.system.menu.command.AddMenuCommand;
@@ -23,10 +25,7 @@ import com.apelet.domain.system.menu.query.MenuQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -39,9 +38,11 @@ public class MenuApplicationService {
 
     private final SysMenuService menuService;
 
+    private final SysLocalsService localsService;
+
     private final MenuModelFactory menuModelFactory;
 
-    private final LocalsModelFactory localsModelFactory;
+    private final  LocalsModelFactory localsModelFactory;
 
 
     public List<MenuDTO> getMenuList(MenuQuery query) {
@@ -156,12 +157,18 @@ public class MenuApplicationService {
 
 
     public List<RouterDTO> buildRouterTree(List<Tree<Long>> trees) {
+        List<SysLocalsEntity> localsEntities = localsService.list();
         List<RouterDTO> routers = new LinkedList<>();
         if (CollUtil.isNotEmpty(trees)) {
             for (Tree<Long> tree : trees) {
                 SysMenuEntity entity = (SysMenuEntity)tree.get("entity");
                 if (entity != null) {
-                    RouterDTO routerDTO = new RouterDTO(entity);
+                    Optional<SysLocalsEntity> localsOptional = localsEntities.stream().filter(item -> Objects.equals(item.getMenuId(), entity.getMenuId())).findAny();
+                    SysLocalsEntity localsEntity = null;
+                    if (localsOptional.isPresent()) {
+                        localsEntity = localsOptional.get();
+                    }
+                    RouterDTO routerDTO = new RouterDTO(entity, localsEntity);
                     List<Tree<Long>> children = tree.getChildren();
                     if (CollUtil.isNotEmpty(children)) {
                         routerDTO.setChildren(buildRouterTree(children));

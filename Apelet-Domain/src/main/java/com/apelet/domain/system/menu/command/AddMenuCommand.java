@@ -22,6 +22,11 @@ public class AddMenuCommand {
     private String routerName;
 
     /**
+     * 国际化字段
+     */
+    private String localsLabel;
+
+    /**
      * 国际化英文值
      */
     private String localsEnValue;

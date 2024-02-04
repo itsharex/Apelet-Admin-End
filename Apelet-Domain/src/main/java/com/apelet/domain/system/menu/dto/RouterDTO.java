@@ -2,6 +2,7 @@ package com.apelet.domain.system.menu.dto;
 
 import cn.hutool.core.util.StrUtil;
 import com.apelet.common.utils.jackson.JacksonUtil;
+import com.apelet.domain.system.locals.db.SysLocalsEntity;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -20,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 public class RouterDTO {
 
-    public RouterDTO(SysMenuEntity entity) {
+    public RouterDTO(SysMenuEntity entity, SysLocalsEntity locale) {
         if (entity != null) {
             this.name = entity.getRouterName();
             this.path = entity.getPath();
@@ -30,12 +31,14 @@ public class RouterDTO {
                 this.redirect = entity.getRedirect();
             }
             if (JacksonUtil.isJson(entity.getMetaInfo())) {
-                this.meta = JacksonUtil.from(entity.getMetaInfo(), MetaDTO.class);
+                MetaDTO metaDTO = JacksonUtil.from(entity.getMetaInfo(), MetaDTO.class);
+                metaDTO.setTitle(locale.getLocalsLabel());
+                this.meta = metaDTO;
             } else {
                 this.meta = new MetaDTO();
             }
             // 获取路由时，暂不需要权限
-//            this.meta.setAuths(Lists.newArrayList(entity.getPermission()));
+            // this.meta.setAuths(Lists.newArrayList(entity.getPermission()));
         }
     }
 

@@ -39,7 +39,8 @@ public class LocalsModel extends SysLocalsEntity {
      */
     public void loadLocalsByMenuId(Long menuId, AddMenuCommand addCommand) {
         this.setMenuId(menuId);
-        this.setLocalsLabel(StrUtil.isNotEmpty(addCommand.getMeta().getTitle()) ? addCommand.getMeta().getTitle() : "menus." + addCommand.getPath());
+        // title 则为国际化的label字段
+        this.setLocalsLabel(StrUtil.isNotEmpty(addCommand.getLocalsLabel()) ? addCommand.getLocalsLabel() : "menus." + addCommand.getPath());
         this.setLocalsZhValue(addCommand.getMenuName());
         this.setLocalsEnValue(StrUtil.isNotEmpty(addCommand.getLocalsEnValue()) ? addCommand.getLocalsEnValue() : addCommand.getRouterName());
     }
