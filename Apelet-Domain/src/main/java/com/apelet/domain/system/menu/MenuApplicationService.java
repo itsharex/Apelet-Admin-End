@@ -5,6 +5,8 @@ import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
 import cn.hutool.core.util.StrUtil;
+import com.apelet.common.core.page.AbstractPageQuery;
+import com.apelet.common.core.page.PageDTO;
 import com.apelet.common.enums.common.StatusEnum;
 import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.locals.command.AddLocalsCommand;
@@ -22,6 +24,7 @@ import com.apelet.domain.system.menu.dto.RouterDTO;
 import com.apelet.domain.system.menu.model.MenuModel;
 import com.apelet.domain.system.menu.model.MenuModelFactory;
 import com.apelet.domain.system.menu.query.MenuQuery;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,11 +48,12 @@ public class MenuApplicationService {
     private final  LocalsModelFactory localsModelFactory;
 
 
-    public List<MenuDTO> getMenuList(MenuQuery query) {
-        List<SysMenuEntity> list = menuService.list(query.toQueryWrapper());
-        return list.stream().map(MenuDTO::new)
-            .sorted(Comparator.comparing(MenuDTO::getRank, Comparator.nullsLast(Integer::compareTo)))
-            .collect(Collectors.toList());
+    public PageDTO<MenuDTO> getMenuList(MenuQuery query) {
+        Page<SysMenuEntity> page = menuService.page(query.toPage(), query.toQueryWrapper());
+        List<MenuDTO> records = page.getRecords().stream().map(MenuDTO::new)
+                .sorted(Comparator.comparing(MenuDTO::getRank, Comparator.nullsLast(Integer::compareTo)))
+                .collect(Collectors.toList());
+        return new PageDTO<>(records, page.getTotal());
     }
 
     public MenuDetailDTO getMenuInfo(Long menuId) {

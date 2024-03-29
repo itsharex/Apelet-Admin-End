@@ -1,6 +1,6 @@
 package com.apelet.domain.system.menu.query;
 
-import com.apelet.common.core.page.AbstractQuery;
+import com.apelet.common.core.page.AbstractPageQuery;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class MenuQuery extends AbstractQuery<SysMenuEntity> {
+public class MenuQuery extends AbstractPageQuery<SysMenuEntity> {
       // 直接交给前端筛选
 //    private String menuName;
 //    private Boolean isVisible;
