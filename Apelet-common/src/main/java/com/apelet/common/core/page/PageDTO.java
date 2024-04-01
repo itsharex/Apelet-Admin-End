@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Data
 public class PageDTO<T> {
+
     /**
      * 总记录数
      */

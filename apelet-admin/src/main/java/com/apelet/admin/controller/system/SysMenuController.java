@@ -4,13 +4,11 @@ import cn.hutool.core.lang.tree.Tree;
 import com.apelet.admin.customize.aop.accessLog.AccessLog;
 import com.apelet.common.core.base.BaseController;
 import com.apelet.common.core.dto.ResponseDTO;
-import com.apelet.common.core.page.PageDTO;
 import com.apelet.common.enums.common.BusinessTypeEnum;
 import com.apelet.common.user.web.SystemLoginUser;
 import com.apelet.domain.system.menu.MenuApplicationService;
 import com.apelet.domain.system.menu.command.AddMenuCommand;
 import com.apelet.domain.system.menu.command.UpdateMenuCommand;
-import com.apelet.domain.system.menu.db.SysMenuEntity;
 import com.apelet.domain.system.menu.dto.MenuDTO;
 import com.apelet.domain.system.menu.dto.MenuDetailDTO;
 import com.apelet.domain.system.menu.query.MenuQuery;
@@ -47,8 +45,8 @@ public class SysMenuController extends BaseController {
     @PreAuthorize("@permission.has('system:menu:list')")
     @GetMapping
     public ResponseDTO<List<MenuDTO>> menuList(MenuQuery menuQuery) {
-        PageDTO<MenuDTO> page = menuApplicationService.getMenuList(menuQuery);
-        return ResponseDTO.ok(page.getRows(), page.getTotal());
+        List<MenuDTO> menuList = menuApplicationService.getMenuList(menuQuery);
+        return ResponseDTO.ok(menuList);
     }
 
     /**
