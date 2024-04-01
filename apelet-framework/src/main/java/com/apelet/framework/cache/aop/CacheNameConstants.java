@@ -1,7 +1,7 @@
 package com.apelet.framework.cache.aop;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class CacheNameConstants {
 

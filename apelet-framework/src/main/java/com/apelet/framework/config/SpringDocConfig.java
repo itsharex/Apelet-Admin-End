@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  * SpringDoc API文档相关配置
  */
 @Configuration

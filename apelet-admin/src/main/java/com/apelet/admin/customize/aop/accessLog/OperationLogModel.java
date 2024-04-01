@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Slf4j
 public class OperationLogModel extends SysOperationLogEntity {

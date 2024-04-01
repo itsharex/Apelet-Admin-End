@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * 异常过滤器，因为配置的全局异常捕获器只能捕获MVC框架的异常
  * 不能捕获filter的异常
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Slf4j
 @WebFilter(filterName = "ExceptionFilter", urlPatterns = "/*")

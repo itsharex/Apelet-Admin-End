@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 //@Component
 public class GuavaCacheBean implements Cache {

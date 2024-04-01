@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 /**
  * 自定义注解防止表单重复提交
  * 仅生效于有RequestBody注解的参数  因为使用RequestBodyAdvice来实现
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Inherited
 @Target(ElementType.METHOD)

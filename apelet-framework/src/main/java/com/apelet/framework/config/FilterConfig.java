@@ -14,7 +14,7 @@ import org.springframework.web.filter.CorsFilter;
 
 /**
  * Filter配置
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Configuration
 public class FilterConfig {

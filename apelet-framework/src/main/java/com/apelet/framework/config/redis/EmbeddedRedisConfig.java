@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Configuration
 @ConditionalOnExpression("'${agileboot.embedded.redis}' == 'true'")

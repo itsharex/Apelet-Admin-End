@@ -3,7 +3,7 @@ package com.apelet.framework.cache.redis;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public enum CacheKeyEnum {
 

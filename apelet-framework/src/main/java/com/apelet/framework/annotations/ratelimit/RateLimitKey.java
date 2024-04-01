@@ -2,7 +2,7 @@ package com.apelet.framework.annotations.ratelimit;
 
 /**
  * 限流key
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class RateLimitKey {
 

@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * 全局事务管理器
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Configuration
 @RequiredArgsConstructor

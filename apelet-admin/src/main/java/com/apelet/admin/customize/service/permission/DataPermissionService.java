@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 数据权限校验服务
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Service("dataScope")
 @RequiredArgsConstructor

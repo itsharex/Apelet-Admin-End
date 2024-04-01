@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * token验证处理
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Component
 @Slf4j

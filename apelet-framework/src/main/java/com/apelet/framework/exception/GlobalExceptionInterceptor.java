@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 全局异常处理器
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @RestControllerAdvice
 @Slf4j

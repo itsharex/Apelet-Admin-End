@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 重复提交拦截器 如果涉及前后端加解密的话  也可以通过继承RequestBodyAdvice来实现
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @ControllerAdvice(basePackages = "com.agileboot")
 @Slf4j

@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * 公告 信息操作处理
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Tag(name = "公告API", description = "公告相关的增删查改")
 @RestController

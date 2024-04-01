@@ -3,7 +3,7 @@ package com.apelet.framework.annotations.ratelimit.implementation;
 import com.apelet.framework.annotations.ratelimit.RateLimit;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public abstract class AbstractRateLimitChecker {
 

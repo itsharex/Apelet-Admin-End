@@ -12,7 +12,7 @@ import javax.annotation.PostConstruct;
 
 /**
  * 数据权限检测器工厂
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Component
 public class DataPermissionCheckerFactory {

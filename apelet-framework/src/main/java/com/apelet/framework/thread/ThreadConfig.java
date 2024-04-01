@@ -1,7 +1,7 @@
 package com.apelet.framework.thread;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class ThreadConfig {
 

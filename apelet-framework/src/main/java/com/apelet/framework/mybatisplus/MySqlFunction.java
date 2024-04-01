@@ -10,7 +10,7 @@ import java.util.List;
  * 在H2的初始化 h2sql/agileboot_schema.sql加上这句
  * CREATE ALIAS FIND_IN_SET FOR "com.agileboot.infrastructure.mybatisplus.MySqlFunction.find_in_set";
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class MySqlFunction {
 

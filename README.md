@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Build Status">
    <img src="https://img.shields.io/badge/Spring%20Boot-2.7.1-blue.svg" alt="Downloads">
    <a target="_blank" href="https://bladex.vip">
-   <img src="https://img.shields.io/badge/Author-valarchie-ff69b4.svg" alt="Downloads">
+   <img src="https://img.shields.io/badge/Author-xiaoyuan-zs-ff69b4.svg" alt="Downloads">
  </a>
  <a target="_blank" href="https://bladex.vip">
    <img src="https://img.shields.io/badge/Copyright%20-@Agileboot-%23ff3f59.svg" alt="Downloads">
@@ -27,7 +27,7 @@ AgileBoot是一套开源的全栈精简快速开发平台，毫无保留给个�
 
 
 * 前端是基于优秀的开源项目[Pure-Admin](https://github.com/pure-admin/vue-pure-admin)开发而成。在此感谢Pure-Admin作者。
-* 前端采用Vue3、Element Plus、TypeScript、Pinia。对应前端仓库 [AgileBoot-Front-End](https://github.com/valarchie/AgileBoot-Front-End) ，保持同步更新。
+* 前端采用Vue3、Element Plus、TypeScript、Pinia。对应前端仓库 [AgileBoot-Front-End](https://github.com/xiaoyuan-zs/AgileBoot-Front-End) ，保持同步更新。
 * 后端采用Spring Boot、Spring Security & Jwt、Redis & MySql、Mybatis Plus、Hutool工具包。
 * 权限认证使用Jwt，支持多终端认证系统。
 * 支持注解式主从数据库切换，注解式请求限流，注解式重复请求拦截。
@@ -36,7 +36,7 @@ AgileBoot是一套开源的全栈精简快速开发平台，毫无保留给个�
 * ***有大量的单元测试，集成测试覆盖确保业务逻辑正确***。
 
 ***V1.0.0版本使用JS开发，V2.0.0版本使用TS开发***。  
-***V1.0.0地址：[后端(AgileBoot-Back-End-Basic)](https://github.com/valarchie/AgileBoot-Back-End-Basic) -  [前端(AgileBoot-Front-End-Basic)](https://github.com/valarchie/AgileBoot-Front-End-Basic)***
+***V1.0.0地址：[后端(AgileBoot-Back-End-Basic)](https://github.com/xiaoyuan-zs/AgileBoot-Back-End-Basic) -  [前端(AgileBoot-Front-End-Basic)](https://github.com/xiaoyuan-zs/AgileBoot-Front-End-Basic)***
 
 > 有任何问题或者建议，可以在 _Issues_ 中提给作者。  
 > 
@@ -141,8 +141,8 @@ AgileBoot是一套开源的全栈精简快速开发平台，毫无保留给个�
 #### 前置准备： 下载前后端代码
 
 ```
-git clone https://github.com/valarchie/AgileBoot-Back-End
-git clone https://github.com/valarchie/AgileBoot-Front-End
+git clone https://github.com/xiaoyuan-zs/AgileBoot-Back-End
+git clone https://github.com/xiaoyuan-zs/AgileBoot-Front-End
 ```
 
 #### 安装好Mysql和Redis

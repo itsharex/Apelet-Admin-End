@@ -20,7 +20,7 @@ import java.io.IOException;
 /**
  * token过滤器 验证token有效性
  * 继承OncePerRequestFilter类的话  可以确保只执行filter一次， 避免执行多次
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Component
 @Slf4j
