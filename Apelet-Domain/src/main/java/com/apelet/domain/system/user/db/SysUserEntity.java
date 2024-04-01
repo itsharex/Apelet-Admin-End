@@ -18,7 +18,7 @@ import java.util.Date;
  * 用户信息表
  * </p>
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  * @since 2023-02-27
  */
 @Getter

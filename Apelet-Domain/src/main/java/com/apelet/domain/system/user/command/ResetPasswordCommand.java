@@ -3,7 +3,7 @@ package com.apelet.domain.system.user.command;
 import lombok.Data;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class ResetPasswordCommand {

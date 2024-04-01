@@ -7,7 +7,7 @@ import com.apelet.common.exception.error.ErrorCode;
 import java.util.Objects;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class BasicEnumUtil {
 

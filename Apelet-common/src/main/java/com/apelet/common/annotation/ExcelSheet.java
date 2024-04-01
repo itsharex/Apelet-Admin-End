@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

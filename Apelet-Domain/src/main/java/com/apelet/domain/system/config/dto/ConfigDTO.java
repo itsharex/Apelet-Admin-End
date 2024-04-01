@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 @Schema(name = "ConfigDTO", description = "配置信息")

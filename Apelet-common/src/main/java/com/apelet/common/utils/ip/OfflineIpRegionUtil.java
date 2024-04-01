@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Slf4j
 public class OfflineIpRegionUtil {

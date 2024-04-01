@@ -4,7 +4,7 @@ import com.apelet.common.enums.BasicEnum;
 
 /**
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Deprecated
 public enum MenuComponentEnum implements BasicEnum<Integer> {

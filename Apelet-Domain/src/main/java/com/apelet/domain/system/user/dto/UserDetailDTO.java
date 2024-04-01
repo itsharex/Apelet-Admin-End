@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class UserDetailDTO {

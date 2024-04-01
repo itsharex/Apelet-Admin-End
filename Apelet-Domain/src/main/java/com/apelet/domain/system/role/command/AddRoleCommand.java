@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class AddRoleCommand {

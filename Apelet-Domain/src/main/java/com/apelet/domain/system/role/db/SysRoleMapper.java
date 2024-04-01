@@ -11,7 +11,7 @@ import java.util.List;
  * 角色信息表 Mapper 接口
  * </p>
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  * @since 2022-06-16
  */
 public interface SysRoleMapper extends BaseMapper<SysRoleEntity> {

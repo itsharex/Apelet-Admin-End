@@ -17,7 +17,7 @@ import java.util.Set;
  * 用户信息表 Mapper 接口
  * </p>
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  * @since 2022-06-16
  */
 public interface SysUserMapper extends BaseMapper<SysUserEntity> {

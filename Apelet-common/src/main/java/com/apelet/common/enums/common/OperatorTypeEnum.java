@@ -5,7 +5,7 @@ import com.apelet.common.enums.dictionary.Dictionary;
 
 /**
  * 操作者类型
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Dictionary(name = "sysOperationLog.operatorType")
 public enum OperatorTypeEnum implements BasicEnum<Integer> {

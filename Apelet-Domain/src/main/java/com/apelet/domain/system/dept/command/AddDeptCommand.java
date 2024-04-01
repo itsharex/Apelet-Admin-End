@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.*;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class AddDeptCommand {

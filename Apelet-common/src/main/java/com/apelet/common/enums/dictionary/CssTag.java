@@ -2,7 +2,7 @@ package com.apelet.common.enums.dictionary;
 
 /**
  * Css 样式
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class CssTag {
 

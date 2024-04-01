@@ -1,7 +1,7 @@
 package com.apelet.common.enums;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  * 普通的枚举 接口
  * @param <T>
  */

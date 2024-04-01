@@ -4,7 +4,7 @@ import com.apelet.common.annotation.ExcelColumn;
 import lombok.Data;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class AddUserCommand {

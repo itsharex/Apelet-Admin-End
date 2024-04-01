@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 /**
  * 角色模型工厂
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Component
 @RequiredArgsConstructor

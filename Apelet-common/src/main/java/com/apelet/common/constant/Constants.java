@@ -4,7 +4,7 @@ package com.apelet.common.constant;
 /**
  * 通用常量信息
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class Constants {
     private Constants() {

@@ -10,7 +10,7 @@ import com.apelet.domain.system.post.db.SysPostService;
 import lombok.NoArgsConstructor;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @NoArgsConstructor
 public class PostModel extends SysPostEntity {

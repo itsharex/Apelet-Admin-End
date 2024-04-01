@@ -7,9 +7,6 @@ import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
 import com.apelet.common.exception.error.ErrorCode.Business;
 import com.apelet.common.utils.jackson.JacksonUtil;
-import com.apelet.domain.system.locals.command.AddLocalsCommand;
-import com.apelet.domain.system.locals.model.LocalsModel;
-import com.apelet.domain.system.locals.model.LocalsModelFactory;
 import com.apelet.domain.system.menu.command.AddMenuCommand;
 import com.apelet.domain.system.menu.command.UpdateMenuCommand;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
@@ -19,7 +16,7 @@ import lombok.NoArgsConstructor;
 import java.util.Objects;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @NoArgsConstructor
 public class MenuModel extends SysMenuEntity {

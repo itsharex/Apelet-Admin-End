@@ -14,7 +14,7 @@ import java.util.Date;
 /**
  * Entity基类
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

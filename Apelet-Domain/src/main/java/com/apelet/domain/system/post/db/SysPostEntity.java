@@ -17,7 +17,7 @@ import java.io.Serializable;
  * 岗位信息表
  * </p>
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  * @since 2022-10-02
  */
 @Getter

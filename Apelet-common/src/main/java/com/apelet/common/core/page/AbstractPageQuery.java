@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import javax.validation.constraints.Max;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

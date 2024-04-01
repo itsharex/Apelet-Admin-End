@@ -2,7 +2,7 @@ package com.apelet.common.enums;
 
 /**
  * 字典类型 接口
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public interface DictionaryEnum<T> extends BasicEnum<T> {
 

@@ -6,7 +6,7 @@ import com.apelet.domain.system.user.db.SysUserEntity;
 import lombok.Data;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class UserProfileDTO {

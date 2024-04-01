@@ -6,7 +6,7 @@ import com.apelet.common.enums.dictionary.Dictionary;
 
 /**
  * 对应sys_menu表的is_visible字段
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Deprecated
 @Dictionary(name = "sysMenu.isVisible")

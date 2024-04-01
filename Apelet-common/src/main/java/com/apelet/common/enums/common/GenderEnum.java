@@ -7,7 +7,7 @@ import com.apelet.common.enums.dictionary.Dictionary;
 /**
  * 对应sys_user的sex字段
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Dictionary(name = "sysUser.sex")
 public enum GenderEnum implements DictionaryEnum<Integer> {

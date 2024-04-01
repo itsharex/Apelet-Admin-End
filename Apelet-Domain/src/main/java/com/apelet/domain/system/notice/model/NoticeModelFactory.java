@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 公告模型工厂
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Component
 @RequiredArgsConstructor

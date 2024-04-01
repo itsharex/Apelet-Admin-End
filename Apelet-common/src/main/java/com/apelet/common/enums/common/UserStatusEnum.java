@@ -6,7 +6,7 @@ import com.apelet.common.enums.dictionary.Dictionary;
 
 /**
  * 对应sys_user的status字段
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Dictionary(name = "sysUser.status")
 public enum UserStatusEnum implements DictionaryEnum<Integer> {

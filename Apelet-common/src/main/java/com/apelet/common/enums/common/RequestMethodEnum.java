@@ -4,7 +4,7 @@ import com.apelet.common.enums.BasicEnum;
 
 /**
  * Http Method
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public enum RequestMethodEnum implements BasicEnum<Integer> {
 

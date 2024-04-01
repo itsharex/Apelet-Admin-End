@@ -17,7 +17,7 @@ import java.io.Serializable;
  * 参数配置表
  * </p>
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  * @since 2022-11-03
  */
 @Getter

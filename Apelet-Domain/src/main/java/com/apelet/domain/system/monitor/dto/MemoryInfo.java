@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 內存相关信息
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class MemoryInfo {

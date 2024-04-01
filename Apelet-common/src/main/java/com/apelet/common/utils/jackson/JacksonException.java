@@ -1,7 +1,7 @@
 package com.apelet.common.utils.jackson;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class JacksonException extends RuntimeException {
 

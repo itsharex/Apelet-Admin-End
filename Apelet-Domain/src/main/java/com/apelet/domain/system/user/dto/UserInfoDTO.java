@@ -4,7 +4,7 @@ import com.apelet.domain.system.role.dto.RoleDTO;
 import lombok.Data;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class UserInfoDTO {

@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Set;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class CurrentLoginUserDTO {

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class NoticeAddCommand {

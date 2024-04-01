@@ -1,7 +1,7 @@
 package com.apelet.common.exception.error;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public interface ErrorCodeInterface {
 

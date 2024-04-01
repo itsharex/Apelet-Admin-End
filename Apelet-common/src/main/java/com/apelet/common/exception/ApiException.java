@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * 统一异常类
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @EqualsAndHashCode(callSuper = true)
 @Slf4j

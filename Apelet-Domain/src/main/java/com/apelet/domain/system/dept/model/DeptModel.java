@@ -14,7 +14,7 @@ import com.apelet.domain.system.dept.db.SysDeptService;
 import java.util.Objects;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class DeptModel extends SysDeptEntity {
 

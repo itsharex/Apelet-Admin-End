@@ -17,7 +17,7 @@ import java.io.Serializable;
  * 通知公告表
  * </p>
  *
- * @author valarchie
+ * @author xiaoyuan-zs
  * @since 2022-10-02
  */
 @Getter

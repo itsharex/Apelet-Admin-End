@@ -3,7 +3,7 @@ package com.apelet.common.enums.common;
 import com.apelet.common.enums.BasicEnum;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  * 对应 sys_menu表的menu_type字段
  */
 public enum MenuTypeEnum implements BasicEnum<Integer> {

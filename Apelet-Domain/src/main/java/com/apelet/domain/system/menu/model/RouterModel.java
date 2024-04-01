@@ -3,7 +3,7 @@ package com.apelet.domain.system.menu.model;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 public class RouterModel extends SysMenuEntity {
 

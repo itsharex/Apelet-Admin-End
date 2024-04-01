@@ -8,7 +8,7 @@ import com.apelet.common.enums.dictionary.Dictionary;
  * 对应sys_notice的 notice_type字段
  * 名称一般由对应的表名.字段构成
  * 全局的话使用common作为表名
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Dictionary(name = "sysNotice.noticeType")
 public enum NoticeTypeEnum implements DictionaryEnum<Integer> {

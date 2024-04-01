@@ -2,7 +2,6 @@ package com.apelet.domain.system.menu.model;
 
 import com.apelet.common.exception.ApiException;
 import com.apelet.common.exception.error.ErrorCode;
-import com.apelet.domain.system.locals.model.LocalsModelFactory;
 import com.apelet.domain.system.menu.db.SysMenuEntity;
 import com.apelet.domain.system.menu.db.SysMenuService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 菜单模型工厂
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Component
 @RequiredArgsConstructor

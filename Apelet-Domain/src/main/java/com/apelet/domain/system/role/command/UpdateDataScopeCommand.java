@@ -8,7 +8,7 @@ import javax.validation.constraints.Positive;
 import java.util.List;
 
 /**
- * @author valarchie
+ * @author xiaoyuan-zs
  */
 @Data
 public class UpdateDataScopeCommand {
