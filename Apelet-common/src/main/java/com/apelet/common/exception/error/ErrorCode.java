@@ -35,7 +35,7 @@ public enum ErrorCode implements ErrorCodeInterface {
      * 目前10000~19999是初始系统内嵌功能使用的错误码，后续开发者可以直接使用20000以上的错误码作为业务错误码
      */
 
-    SUCCESS(0, "操作成功", "SUCCESS"),
+    SUCCESS(200, "操作成功", "SUCCESS"),
     FAILED(99999, "操作失败", "FAILED");
 
     private final int code;
