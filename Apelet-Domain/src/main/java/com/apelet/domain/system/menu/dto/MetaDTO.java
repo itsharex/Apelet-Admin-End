@@ -32,15 +32,12 @@ public class MetaDTO {
     private List<String> roles;
     // 按钮级别权限设置
     private List<String> auths;
+    // 是否内嵌frame
+    private Boolean isFrame;
     // 需要内嵌的iframe链接地址
     private String iframeSrc;
     // 是否外链
     private Boolean isLink;
-    /**
-     *  菜单排序，值越高排的越后（只针对顶级路由）
-     */
-    private Integer rank;
-
 
     // =========  目前系统仅支持以上这些参数的设置 后续有需要的话开发者可自行设置的这些参数  ===========
 

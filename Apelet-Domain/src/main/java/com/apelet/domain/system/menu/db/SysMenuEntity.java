@@ -60,6 +60,14 @@ public class SysMenuEntity extends BaseEntity<SysMenuEntity> {
     @TableField("is_button")
     private Boolean isButton;
 
+    @ApiModelProperty("是否外链")
+    @TableField("is_link")
+    private Boolean isLink;
+
+    @ApiModelProperty("是否内嵌frame")
+    @TableField("is_frame")
+    private Boolean isFrame;
+
     @ApiModelProperty("权限标识")
     @TableField("permission")
     private String permission;
@@ -71,6 +79,14 @@ public class SysMenuEntity extends BaseEntity<SysMenuEntity> {
     @ApiModelProperty("路由元信息（前端根据这个信息进行逻辑处理）")
     @TableField("meta_info")
     private String metaInfo;
+
+    @ApiModelProperty("菜单类别")
+    @TableField("`menu_sort`")
+    private Integer menuSort;
+
+    @ApiModelProperty("菜单排序")
+    @TableField("`sort`")
+    private Long sort;
 
     @ApiModelProperty("菜单状态（1启用 0停用）")
     @TableField("`status`")

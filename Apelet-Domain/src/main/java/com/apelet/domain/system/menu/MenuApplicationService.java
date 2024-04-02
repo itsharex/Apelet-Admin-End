@@ -45,7 +45,7 @@ public class MenuApplicationService {
 
     public List<MenuDTO> getMenuList(MenuQuery query) {
         return menuService.list(query.toQueryWrapper()).stream().map(MenuDTO::new)
-                .sorted(Comparator.comparing(MenuDTO::getRank, Comparator.nullsLast(Integer::compareTo)))
+                .sorted(Comparator.comparing(MenuDTO::getRank, Comparator.nullsLast(Long::compareTo)))
                 .collect(Collectors.toList());
     }
 
@@ -154,6 +154,7 @@ public class MenuApplicationService {
 
 
     public List<RouterDTO> buildRouterTree(List<Tree<Long>> trees) {
+        // 获取菜单国际化
         List<SysLocalsEntity> localsEntities = localsService.list();
         List<RouterDTO> routers = new LinkedList<>();
         if (CollUtil.isNotEmpty(trees)) {

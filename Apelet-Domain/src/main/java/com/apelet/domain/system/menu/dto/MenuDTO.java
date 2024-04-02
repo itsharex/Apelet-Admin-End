@@ -27,6 +27,11 @@ public class MenuDTO {
             this.path = entity.getPath();
             this.status = entity.getStatus();
             this.isButton = entity.getIsButton();
+            this.isLink = entity.getIsLink();
+            this.isFrame = entity.getIsFrame();
+            this.menuSort = entity.getMenuSort();
+            this.rank = entity.getSort();
+            this.permission = entity.getPermission();
             this.statusStr = BasicEnumUtil.getDescriptionByValue(StatusEnum.class, entity.getStatus());
 
             if (!entity.getIsButton()) {
@@ -38,7 +43,6 @@ public class MenuDTO {
 
             if (StrUtil.isNotEmpty(entity.getMetaInfo()) && JacksonUtil.isJson(entity.getMetaInfo())) {
                 MetaDTO meta = JacksonUtil.from(entity.getMetaInfo(), MetaDTO.class);
-                this.rank = meta.getRank();
                 this.icon = meta.getIcon();
             }
             this.createTime = entity.getCreateTime();
@@ -56,13 +60,21 @@ public class MenuDTO {
 
     private String path;
 
-    private Integer rank;
+    private Long rank;
 
     private Integer menuType;
 
     private String menuTypeStr;
 
+    private Integer menuSort;
+
+    private String permission;
+
     private Boolean isButton;
+
+    private Boolean isLink;
+
+    private Boolean isFrame;
 
     private Integer status;
 
@@ -71,7 +83,5 @@ public class MenuDTO {
     private Date createTime;
 
     private String icon;
-
-
 
 }

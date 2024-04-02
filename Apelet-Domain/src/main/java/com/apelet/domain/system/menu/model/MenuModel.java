@@ -68,8 +68,8 @@ public class MenuModel extends SysMenuEntity {
         SysMenuEntity parentMenu = menuService.getById(getParentId());
 
         if (parentMenu != null && getIsButton() && (
-            Objects.equals(parentMenu.getMenuType(), MenuTypeEnum.IFRAME.getValue())
-                || Objects.equals(parentMenu.getMenuType(),MenuTypeEnum.OUTSIDE_LINK_REDIRECT.getValue())
+            Objects.equals(parentMenu.getMenuType(), MenuTypeEnum.BUTTON.getValue())
+                || Objects.equals(parentMenu.getIsButton(),MenuTypeEnum.LINK.getValue())
         )) {
             throw new ApiException(Business.MENU_NOT_ALLOWED_TO_CREATE_BUTTON_ON_IFRAME_OR_OUT_LINK);
         }

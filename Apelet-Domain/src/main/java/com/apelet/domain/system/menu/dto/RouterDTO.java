@@ -27,7 +27,8 @@ public class RouterDTO {
             this.name = entity.getRouterName();
             this.path = entity.getPath();
             this.component = entity.getComponent();
-//            this.rank = entity.getRank();
+            this.rank = entity.getSort();
+            this.menuSort = entity.getMenuSort();
             if (!StrUtil.isEmpty(entity.getRedirect())) {
                 this.redirect = entity.getRedirect();
             }
@@ -38,6 +39,8 @@ public class RouterDTO {
                 } else {
                     metaDTO.setTitle("menus." + entity.getPath());
                 }
+                metaDTO.setIsLink(entity.getIsLink());
+                metaDTO.setIsFrame(entity.getIsFrame());
                 this.meta = metaDTO;
             } else {
                 this.meta = new MetaDTO();
@@ -70,10 +73,14 @@ public class RouterDTO {
     private String component;
 
     /**
+     * 菜单类别
+     */
+    private Integer menuSort;
+
+    /**
      * 一级菜单排序值（排序仅支持一级菜单）
      */
-    private Integer rank;
-
+    private Long rank;
 
     /**
      * 其他元素
@@ -84,5 +91,4 @@ public class RouterDTO {
      * 子路由
      */
     private List<RouterDTO> children;
-
 }
