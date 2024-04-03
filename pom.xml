@@ -17,7 +17,6 @@
 
     <modules>
         <module>apelet-admin</module>
-        <module>apelet-quartz</module>
         <module>apelet-common</module>
         <module>apelet-domain</module>
         <module>apelet-framework</module>
@@ -236,13 +235,6 @@
             <dependency>
                 <groupId>com.apelet</groupId>
                 <artifactId>apelet-admin</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!-- 定时任务-->
-            <dependency>
-                <groupId>com.apelet</groupId>
-                <artifactId>apelet-quartz</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
